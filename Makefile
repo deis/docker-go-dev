@@ -1,4 +1,4 @@
-VERSION := 0.1.0
+VERSION := 0.1.0-alpine
 REGISTRY ?= quay.io
 IMAGE_PREFIX ?= deis/
 IMAGE := ${REGISTRY}/${IMAGE_PREFIX}go-dev:${VERSION}
