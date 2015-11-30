@@ -1,7 +1,9 @@
-FROM golang:1.5.1
+FROM golang:1.5.1-alpine
 
 ENV GO15VENDOREXPERIMENT=1
 ENV GLIDE_HOME=/root
+
+RUN apk add openssl build-base git mercurial --update-cache
 
 WORKDIR /tmp
 
