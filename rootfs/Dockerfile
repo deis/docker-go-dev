@@ -13,6 +13,8 @@ RUN mv linux-amd64/glide /usr/local/bin/
 
 RUN rm -rf linux-amd64 glide-0.7.2-linux-amd64.tar.gz
 
+RUN go get -u -v github.com/golang/lint/golint
+
 WORKDIR /go
 
 COPY . /
