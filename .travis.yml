@@ -1,0 +1,10 @@
+language: generic
+
+services:
+  - docker
+
+script: make build
+
+deploy:
+  provider: script
+  script: _scripts/ci/deploy.sh
