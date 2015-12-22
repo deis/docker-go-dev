@@ -10,7 +10,7 @@ RUN wget https://github.com/Masterminds/glide/releases/download/0.8.1/glide-0.8.
   mv linux-amd64/glide /usr/local/bin/ && \
   rm -rf linux-amd64 glide-0.8.1-linux-amd64.tar.gz
 
-RUN go get -u -v github.com/golang/lint/golint
+RUN go get -u -v github.com/golang/lint/golint github.com/onsi/ginkgo/ginkgo
 
 WORKDIR /go
 
