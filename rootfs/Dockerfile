@@ -18,7 +18,8 @@ RUN wget https://github.com/Masterminds/glide/releases/download/0.8.3/glide-0.8.
 RUN go get -u -v \
   github.com/golang/lint/golint \
   github.com/onsi/ginkgo/ginkgo \
-  github.com/pwaller/goupx
+  github.com/pwaller/goupx \
+  github.com/mitchellh/gox
 
 WORKDIR /go
 
