@@ -6,6 +6,7 @@ ENV GLIDE_HOME=/root
 WORKDIR /tmp
 
 RUN apt-get update && apt-get install -y \
+  jq \
   man \
   upx \
   zip \
