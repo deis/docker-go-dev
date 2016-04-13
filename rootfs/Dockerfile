@@ -11,14 +11,13 @@ RUN apt-get update && apt-get install -y \
   upx \
   zip \
   --no-install-recommends \
-  && rm -rf /var/lib/apt/lists/*
-
-RUN wget https://github.com/Masterminds/glide/releases/download/0.10.1/glide-0.10.1-linux-amd64.tar.gz && \
-  tar xvfz glide-0.10.1-linux-amd64.tar.gz && \
-  mv linux-amd64/glide /usr/local/bin/ && \
-  rm -rf linux-amd64 glide-0.10.1-linux-amd64.tar.gz
-
-RUN go get -u -v \
+  && rm -rf /var/lib/apt/lists/* \
+  && curl -L https://github.com/Masterminds/glide/releases/download/0.10.1/glide-0.10.1-linux-amd64.tar.gz | tar xvz \
+  && mv linux-amd64/glide /usr/local/bin/ \
+  && rm -rf linux-amd64 \
+  && curl -L https://s3-us-west-2.amazonaws.com/get-deis/shellcheck-0.4.3-linux-amd64 -o /usr/local/bin/shellcheck \
+  && chmod +x /usr/local/bin/shellcheck \
+  && go get -u -v \
   github.com/golang/lint/golint \
   github.com/onsi/ginkgo/ginkgo \
   github.com/pwaller/goupx \
