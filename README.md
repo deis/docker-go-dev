@@ -17,6 +17,7 @@ creating [issues][] and submitting [pull requests][].
 * [golint][]: go source code linter
 * [gox][]: simple go cross-compiling tool
 * [shellcheck][]: static analysis for shell scripts
+* [test-cover.sh][]: test coverage for multiple go packages
 * [upx][]: executable packer
 
 ## Usage
@@ -58,4 +59,5 @@ The latest deis/go-dev Docker image is available at:
 [pull requests]: https://github.com/deis/docker-go-dev/pulls
 [Quay.io]: https://quay.io
 [shellcheck]: https://github.com/koalaman/shellcheck
+[test-cover.sh]: https://github.com/deis/docker-go-dev/tree/master/rootfs/usr/local/bin/test-cover.sh
 [upx]: http://upx.sourceforge.net/

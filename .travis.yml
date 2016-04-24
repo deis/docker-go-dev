@@ -3,7 +3,7 @@ language: generic
 services:
   - docker
 
-script: make build
+script: make build test
 
 deploy:
   provider: script
