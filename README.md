@@ -11,7 +11,7 @@ The go-dev docker container provides a lightweight Go development environment fo
 * [glide](https://github.com/Masterminds/glide): go dependency management
 * [golint](https://github.com/golang/lint): go source code linter
 * [ginkgo](https://github.com/onsi/ginkgo): BDD testing framework for go
-* [goupx](https://github.com/pwaller/goupx): go-compatible executable packer
+* [upx](http://upx.sourceforge.net/): executable packer
 * [gox](https://github.com/mitchellh/gox): simple go cross-compiling tool
 
 ## Usage

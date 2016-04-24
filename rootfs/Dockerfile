@@ -16,7 +16,6 @@ RUN apt-get update && apt-get install -y \
   && go get -u -v \
   github.com/golang/lint/golint \
   github.com/onsi/ginkgo/ginkgo \
-  github.com/pwaller/goupx \
   github.com/mitchellh/gox
 
 WORKDIR /go
