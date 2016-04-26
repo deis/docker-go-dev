@@ -2,8 +2,11 @@
 
 [![Build Status](https://travis-ci.org/deis/docker-go-dev.svg?branch=master)](https://travis-ci.org/deis/docker-go-dev) [![Docker Repository on Quay](https://quay.io/repository/deis/go-dev/status "Docker Repository on Quay")](https://quay.io/repository/deis/go-dev)
 
-## Summary
-The go-dev docker container provides a lightweight Go development environment for use by Deis contributors.  Many Deis component builds delegate to containers based on this image, thereby eliminating the need for contributors to install and manage any specific set of development tools and version thereof. Although created for use with Deis development, this image may prove generally useful to the Go community.
+A [Go][] language development toolbox.
+
+Many [Deis Workflow][] components use this Docker image as a standard build and test environment,
+but it is intended to be useful to any Go developer. Please help make deis/go-dev better by
+creating [issues][] and submitting [pull requests][].
 
 ## Image Contents
 
@@ -41,12 +44,16 @@ The latest deis/go-dev Docker image is available at:
   docker pull deis/go-dev
   ```
 
+[Deis Workflow]: https://deis.com/
 [Docker Hub]: https://hub.docker.com
 [ginkgo]: https://github.com/onsi/ginkgo
 [glide]: https://github.com/Masterminds/glide
+[Go]: https://golang.org/
 [golint]: https://github.com/golang/lint
 [gox]: https://github.com/mitchellh/gox
+[issues]: https://github.com/deis/docker-go-dev/issues
 [official go Docker image]: https://hub.docker.com/_/golang/
+[pull requests]: https://github.com/deis/docker-go-dev/pulls
 [Quay.io]: https://quay.io
 [shellcheck]: https://github.com/koalaman/shellcheck
 [upx]: http://upx.sourceforge.net/
