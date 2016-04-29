@@ -11,6 +11,7 @@ creating [issues][] and submitting [pull requests][].
 ## Image Contents
 
 * based on the [official go Docker image][]
+* [gen-changelog.sh][]: generate updates to CHANGELOG.md
 * [ginkgo][]: BDD testing framework for go
 * [glide][]: go dependency management
 * [golint][]: go source code linter
@@ -46,6 +47,7 @@ The latest deis/go-dev Docker image is available at:
 
 [Deis Workflow]: https://deis.com/
 [Docker Hub]: https://hub.docker.com
+[gen-changelog.sh]: https://github.com/deis/docker-go-dev/tree/master/rootfs/usr/local/bin/gen-changelog.sh
 [ginkgo]: https://github.com/onsi/ginkgo
 [glide]: https://github.com/Masterminds/glide
 [Go]: https://golang.org/
