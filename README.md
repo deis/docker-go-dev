@@ -16,6 +16,7 @@ creating [issues][] and submitting [pull requests][].
 * [glide][]: go dependency management
 * [golint][]: go source code linter
 * [gox][]: simple go cross-compiling tool
+* [jq][]: command-line JSON processor
 * [shellcheck][]: static analysis for shell scripts
 * [upx][]: executable packer
 
@@ -54,6 +55,7 @@ The latest deis/go-dev Docker image is available at:
 [golint]: https://github.com/golang/lint
 [gox]: https://github.com/mitchellh/gox
 [issues]: https://github.com/deis/docker-go-dev/issues
+[jq]: https://stedolan.github.io/jq/
 [official go Docker image]: https://hub.docker.com/_/golang/
 [pull requests]: https://github.com/deis/docker-go-dev/pulls
 [Quay.io]: https://quay.io
