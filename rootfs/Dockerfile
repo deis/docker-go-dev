@@ -2,6 +2,14 @@ FROM golang:1.6.3
 
 ENV GLIDE_VERSION=v0.11.0 GLIDE_HOME=/root GO15VENDOREXPERIMENT=1
 
+RUN addgroup --gid 999 godev
+RUN adduser --system \
+	--shell /bin/bash \
+	--disabled-password \
+	--gid 999 \
+	--uid 999 \
+	godev
+
 RUN apt-get update && apt-get install -y \
   jq \
   man \
@@ -21,3 +29,5 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /go
 
 COPY . /
+
+USER godev
