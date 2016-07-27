@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# Mandatory tests
+gometalinter --vendor --tests --deadline=20s --disable-all \
+--enable=gofmt \
+--enable=misspell \
+--enable=deadcode \
+--enable=ineffassign \
+--enable=gosimple \
+--enable=vet \
+./...
+
+mandatory=$?
+
+# Optional tests
+gometalinter --vendor --tests --deadline=20s --disable-all \
+--enable=golint \
+./...
+
+exit $mandatory
