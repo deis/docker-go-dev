@@ -14,9 +14,10 @@ RUN apt-get update && apt-get install -y \
   && curl -L https://s3-us-west-2.amazonaws.com/get-deis/shellcheck-0.4.3-linux-amd64 -o /usr/local/bin/shellcheck \
   && chmod +x /usr/local/bin/shellcheck \
   && go get -u -v \
-  github.com/golang/lint/golint \
+  github.com/alecthomas/gometalinter \
   github.com/onsi/ginkgo/ginkgo \
-  github.com/mitchellh/gox
+  github.com/mitchellh/gox \
+  && gometalinter --install
 
 WORKDIR /go
 
