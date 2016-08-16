@@ -28,7 +28,6 @@ included tools or scripts. Here's an example of running `glide up` for deis/buil
 
 ```console
 $ docker run --rm \
-  --env GO15VENDOREXPERIMENT=1 \
   --volume $GOPATH/src/github.com/deis/builder:/go/src/github.com/deis/builder \
   --workdir /go/src/github.com/deis/builder \
   quay.io/deis/go-dev:latest \

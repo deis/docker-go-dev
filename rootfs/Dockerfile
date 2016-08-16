@@ -1,6 +1,6 @@
 FROM golang:1.7
 
-ENV GLIDE_VERSION=v0.11.1 GLIDE_HOME=/root GO15VENDOREXPERIMENT=1
+ENV GLIDE_VERSION=v0.11.1 GLIDE_HOME=/root
 
 RUN apt-get update && apt-get install -y \
   jq \
