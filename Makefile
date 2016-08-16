@@ -7,7 +7,7 @@ IMAGE := ${REGISTRY}${IMAGE_PREFIX}/go-dev:${VERSION}
 SHELL_SCRIPTS = /usr/local/bin/gen-changelog.sh /usr/local/bin/test-cover.sh
 
 # dockerized development environment variables
-DEV_ENV_PREFIX := docker run --rm -e GO15VENDOREXPERIMENT=1
+DEV_ENV_PREFIX := docker run --rm
 DEV_ENV_CMD := ${DEV_ENV_PREFIX} ${IMAGE}
 
 build:
