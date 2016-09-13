@@ -19,6 +19,8 @@ RUN apt-get update && apt-get install -y \
     | tar -vxz -C /usr/local/bin --strip=1 \
   && curl -L https://s3-us-west-2.amazonaws.com/get-deis/shellcheck-0.4.3-linux-amd64 -o /usr/local/bin/shellcheck \
   && chmod +x /usr/local/bin/shellcheck \
+  && curl -L https://storage.googleapis.com/k8s-claimer/git-e4dcc16/k8s-claimer-git-e4dcc16-linux-amd64 -o /usr/local/bin/k8s-claimer \
+	&& chmod +x /usr/local/bin/k8s-claimer \
   && go get -u -v \
   github.com/alecthomas/gometalinter \
   github.com/onsi/ginkgo/ginkgo \
