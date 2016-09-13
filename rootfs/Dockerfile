@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y \
   git \
   gcc \
   make \
+  mercurial \
   --no-install-recommends \
   && rm -rf /var/lib/apt/lists/* \
   && curl -L https://storage.googleapis.com/golang/go$GO_VERSION.linux-amd64.tar.gz | tar -C /usr/local -xz \
