@@ -1,7 +1,8 @@
 FROM golang:1.7.1
 
 ENV GLIDE_VERSION=v0.12.2 \
-    GLIDE_HOME=/root
+    GLIDE_HOME=/root \
+    K8S_VERSION=v1.3.5
 
 RUN apt-get update && apt-get install -y \
   jq \
@@ -14,6 +15,8 @@ RUN apt-get update && apt-get install -y \
     | tar -vxz -C /usr/local/bin --strip=1 \
   && curl -L https://s3-us-west-2.amazonaws.com/get-deis/shellcheck-0.4.3-linux-amd64 -o /usr/local/bin/shellcheck \
   && chmod +x /usr/local/bin/shellcheck \
+  && curl -L https://storage.googleapis.com/kubernetes-release/release/$K8S_VERSION/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl \
+	&& chmod +x /usr/local/bin/kubectl \
   && curl -L https://storage.googleapis.com/k8s-claimer/git-e4dcc16/k8s-claimer-git-e4dcc16-linux-amd64 -o /usr/local/bin/k8s-claimer \
 	&& chmod +x /usr/local/bin/k8s-claimer \
   && go get -u -v \
