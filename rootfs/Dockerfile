@@ -1,15 +1,23 @@
-FROM golang:1.7.1
+FROM quay.io/deis/base:v0.3.4
 
-ENV GLIDE_VERSION=v0.12.2 \
-    GLIDE_HOME=/root
+ENV GO_VERSION=1.7.1 \
+    GLIDE_VERSION=v0.12.2 \
+    GLIDE_HOME=/root \
+    PATH=$PATH:/usr/local/go/bin:/go/bin \
+    GOPATH=/go
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
+  build-essential \
+  git-core \
+  mercurial \
+  util-linux \
   jq \
   man \
   upx \
   zip \
   --no-install-recommends \
   && rm -rf /var/lib/apt/lists/* \
+  && curl -L https://storage.googleapis.com/golang/go$GO_VERSION.linux-amd64.tar.gz | tar -C /usr/local -xz \
   && curl -sSL https://github.com/Masterminds/glide/releases/download/$GLIDE_VERSION/glide-$GLIDE_VERSION-linux-amd64.tar.gz \
     | tar -vxz -C /usr/local/bin --strip=1 \
   && curl -L https://s3-us-west-2.amazonaws.com/get-deis/shellcheck-0.4.3-linux-amd64 -o /usr/local/bin/shellcheck \
