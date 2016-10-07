@@ -1,7 +1,7 @@
 FROM quay.io/deis/base:v0.3.4
 
 ENV GO_VERSION=1.7.1 \
-    GLIDE_VERSION=v0.12.2 \
+    GLIDE_VERSION=v0.12.3 \
     GLIDE_HOME=/root \
     PATH=$PATH:/usr/local/go/bin:/go/bin \
     GOPATH=/go
