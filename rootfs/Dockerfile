@@ -13,6 +13,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
   util-linux \
   jq \
   man \
+  unzip \
   upx \
   zip \
   --no-install-recommends \
@@ -24,10 +25,19 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
   && chmod +x /usr/local/bin/shellcheck \
   && curl -L https://storage.googleapis.com/k8s-claimer/git-e4dcc16/k8s-claimer-git-e4dcc16-linux-amd64 -o /usr/local/bin/k8s-claimer \
 	&& chmod +x /usr/local/bin/k8s-claimer \
+  && curl -sSL -o /tmp/protoc.zip https://github.com/google/protobuf/releases/download/v3.1.0/protoc-3.1.0-linux-x86_64.zip \
+  && unzip /tmp/protoc.zip 'bin/protoc' -d /usr/local \
+  && rm /tmp/protoc.zip \
+  && apt-get purge -y --auto-remove \
+    unzip \
+  && apt-get autoremove -y \
+  && apt-get clean -y \
+  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/man /usr/share/doc \
   && go get -u -v \
   github.com/alecthomas/gometalinter \
   github.com/onsi/ginkgo/ginkgo \
   github.com/mitchellh/gox \
+  github.com/golang/protobuf/protoc-gen-go \
   && gometalinter --install
 
 WORKDIR /go
