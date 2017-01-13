@@ -11,7 +11,6 @@ creating [issues][] and submitting [pull requests][].
 ## Image Contents
 
 * based on the [official go Docker image][]
-* [gen-changelog.sh][]: generate updates to CHANGELOG.md
 * [ginkgo][]: BDD testing framework for go
 * [glide][]: go dependency management
 * [golint][]: go source code linter
