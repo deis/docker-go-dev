@@ -1,4 +1,4 @@
-FROM quay.io/deis/base:v0.3.5
+FROM quay.io/deis/base:v0.3.6
 
 ENV GO_VERSION=1.7.4 \
     GLIDE_VERSION=v0.12.3 \
