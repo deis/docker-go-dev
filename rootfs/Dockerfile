@@ -1,6 +1,6 @@
 FROM quay.io/deis/base:v0.3.6
 
-ENV GO_VERSION=1.7.5 \
+ENV GO_VERSION=1.8.1 \
     GLIDE_VERSION=v0.12.3 \
     GLIDE_HOME=/root \
     SHELLCHECK_VERSION=v0.4.6 \
