@@ -39,6 +39,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
   github.com/onsi/ginkgo/ginkgo \
   github.com/mitchellh/gox \
   github.com/golang/protobuf/protoc-gen-go \
+  github.com/golang/dep/cmd/dep \
   && gometalinter --install
 
 WORKDIR /go
