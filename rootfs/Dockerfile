@@ -34,7 +34,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
   && apt-get autoremove -y \
   && apt-get clean -y \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/man /usr/share/doc \
-  && curl -fsSL https://get.docker.com/ | sh \
+  && curl -fsSL https://get.docker.com/builds/Linux/x86_64/docker-17.05.0-ce.tgz/ | sh \
   && go get -u -v \
   github.com/alecthomas/gometalinter \
   github.com/onsi/ginkgo/ginkgo \

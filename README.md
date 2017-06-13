@@ -19,12 +19,13 @@ creating [issues][] and submitting [pull requests][].
 * [shellcheck][]: static analysis for shell scripts
 * [test-cover.sh][]: test coverage for multiple go packages
 * [upx][]: executable packer
+* [Docker][]: Docker binaries to be able to bind mount /var/run/docker.sock in the dev environment container
 
 ## Usage
 
 Mount your local go code into a container's `$GOPATH` to run any `go` command or one of the
 included tools or scripts. Here's an example of running `glide up` for deis/builder:
-
+s
 ```console
 $ docker run --rm \
   --volume $GOPATH/src/github.com/deis/builder:/go/src/github.com/deis/builder \
@@ -61,3 +62,4 @@ The latest deis/go-dev Docker image is available at:
 [shellcheck]: https://github.com/koalaman/shellcheck
 [test-cover.sh]: https://github.com/deis/docker-go-dev/tree/master/rootfs/usr/local/bin/test-cover.sh
 [upx]: http://upx.sourceforge.net/
+[Docker]: https://get.docker.com/builds/Linux/x86_64/docker-17.05.0-ce.tgz
