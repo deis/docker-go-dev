@@ -25,7 +25,7 @@ creating [issues][] and submitting [pull requests][].
 
 Mount your local go code into a container's `$GOPATH` to run any `go` command or one of the
 included tools or scripts. Here's an example of running `glide up` for deis/builder:
-s
+
 ```console
 $ docker run --rm \
   --volume $GOPATH/src/github.com/deis/builder:/go/src/github.com/deis/builder \
