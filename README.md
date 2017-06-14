@@ -19,6 +19,7 @@ creating [issues][] and submitting [pull requests][].
 * [shellcheck][]: static analysis for shell scripts
 * [test-cover.sh][]: test coverage for multiple go packages
 * [upx][]: executable packer
+* [Docker][]: Docker binaries to be able to bind mount /var/run/docker.sock in the dev environment container
 
 ## Usage
 
@@ -61,3 +62,4 @@ The latest deis/go-dev Docker image is available at:
 [shellcheck]: https://github.com/koalaman/shellcheck
 [test-cover.sh]: https://github.com/deis/docker-go-dev/tree/master/rootfs/usr/local/bin/test-cover.sh
 [upx]: http://upx.sourceforge.net/
+[Docker]: http://www.docker.com
