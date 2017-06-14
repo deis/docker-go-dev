@@ -4,7 +4,7 @@ ENV GO_VERSION=1.8.3 \
     GLIDE_VERSION=v0.12.3 \
     GLIDE_HOME=/root \
     SHELLCHECK_VERSION=v0.4.6 \
-    PATH=$PATH:/usr/local/go/bin:/go/bin \
+    PATH=$PATH:/usr/local/go/bin:/go/bin:/usr/local/bin/docker \
     GOPATH=/go
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
@@ -34,7 +34,9 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
   && apt-get autoremove -y \
   && apt-get clean -y \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/man /usr/share/doc \
-  && curl -fsSL https://get.docker.com/builds/Linux/x86_64/docker-17.05.0-ce.tgz/ | sh \
+  && mkdir -p /usr/local/bin/docker \
+  && curl -fsSLO https://get.docker.com/builds/Linux/x86_64/docker-17.05.0-ce.tgz && tar xzvf docker-17.05.0-ce.tgz -C /usr/local/bin/docker \
+  && rm docker-17.05.0-ce.tgz \
   && go get -u -v \
   github.com/alecthomas/gometalinter \
   github.com/onsi/ginkgo/ginkgo \

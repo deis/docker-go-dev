@@ -62,4 +62,4 @@ The latest deis/go-dev Docker image is available at:
 [shellcheck]: https://github.com/koalaman/shellcheck
 [test-cover.sh]: https://github.com/deis/docker-go-dev/tree/master/rootfs/usr/local/bin/test-cover.sh
 [upx]: http://upx.sourceforge.net/
-[Docker]: https://get.docker.com/builds/Linux/x86_64/docker-17.05.0-ce.tgz
+[Docker]: http://www.docker.com
