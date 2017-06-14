@@ -34,8 +34,9 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
   && apt-get autoremove -y \
   && apt-get clean -y \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/man /usr/share/doc \
-  && mkdir -p /usr/local/bin/docker \
-  && curl -fsSLO https://get.docker.com/builds/Linux/x86_64/docker-17.05.0-ce.tgz && tar xzvf docker-17.05.0-ce.tgz -C /usr/local/bin/docker \
+  && curl -fsSLO https://get.docker.com/builds/Linux/x86_64/docker-17.05.0-ce.tgz \
+  && tar xzvf docker-17.05.0-ce.tgz -C /usr/local/bin \
+  && chmod +x -R /usr/local/bin/docker \
   && rm docker-17.05.0-ce.tgz \
   && go get -u -v \
   github.com/alecthomas/gometalinter \
