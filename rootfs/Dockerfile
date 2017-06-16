@@ -3,6 +3,7 @@ FROM quay.io/deis/base:v0.3.6
 ENV GO_VERSION=1.8.3 \
     GLIDE_VERSION=v0.12.3 \
     GLIDE_HOME=/root \
+    HELM_VERSION=v2.4.2 \
     KUBECTL_VERSION=v1.6.4 \
     SHELLCHECK_VERSION=v0.4.6 \
     PATH=$PATH:/usr/local/go/bin:/go/bin:/usr/local/bin/docker \
@@ -32,6 +33,8 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
   && rm /tmp/protoc.zip \
   && curl -sSL https://storage.googleapis.com/kubernetes-release/release/$KUBECTL_VERSION/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl \
   && chmod +x /usr/local/bin/kubectl \
+  && curl -sSL https://storage.googleapis.com/kubernetes-helm/helm-$HELM_VERSION-linux-amd64.tar.gz \
+    | tar -vxz -C /usr/local/bin --strip=1 \
   && apt-get purge -y --auto-remove \
     unzip \
   && apt-get autoremove -y \
