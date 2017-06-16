@@ -44,6 +44,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
   github.com/mitchellh/gox \
   github.com/golang/protobuf/protoc-gen-go \
   github.com/golang/dep/cmd/dep \
+  github.com/constabulary/gb/... \
   && gometalinter --install
 
 WORKDIR /go
