@@ -16,6 +16,7 @@ creating [issues][] and submitting [pull requests][].
 * [golint][]: go source code linter
 * [gox][]: simple go cross-compiling tool
 * [jq][]: command-line JSON processor
+* [kubectl][]: Kubernetes command-line client
 * [shellcheck][]: static analysis for shell scripts
 * [test-cover.sh][]: test coverage for multiple go packages
 * [upx][]: executable packer
@@ -56,6 +57,7 @@ The latest deis/go-dev Docker image is available at:
 [gox]: https://github.com/mitchellh/gox
 [issues]: https://github.com/deis/docker-go-dev/issues
 [jq]: https://stedolan.github.io/jq/
+[kubectl]: https://kubernetes.io/docs/user-guide/kubectl-overview/
 [official go Docker image]: https://hub.docker.com/_/golang/
 [pull requests]: https://github.com/deis/docker-go-dev/pulls
 [Quay.io]: https://quay.io
