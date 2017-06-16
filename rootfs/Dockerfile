@@ -1,6 +1,7 @@
 FROM quay.io/deis/base:v0.3.6
 
-ENV GO_VERSION=1.8.3 \
+ENV AZCLI_VERSION=2.0.8 \
+    GO_VERSION=1.8.3 \
     GLIDE_VERSION=v0.12.3 \
     GLIDE_HOME=/root \
     HELM_VERSION=v2.4.2 \
@@ -15,7 +16,13 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
   mercurial \
   util-linux \
   jq \
+  libffi-dev \
+  libssl-dev \
   man \
+  python \
+  python-dev \
+  python-pip \
+  python-setuptools \
   unzip \
   upx \
   zip \
@@ -51,7 +58,9 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
   github.com/golang/protobuf/protoc-gen-go \
   github.com/golang/dep/cmd/dep \
   github.com/constabulary/gb/... \
-  && gometalinter --install
+  && gometalinter --install \
+  && pip install --disable-pip-version-check --no-cache-dir azure-cli==${AZCLI_VERSION} \
+  && apt-get purge --auto-remove -y libffi-dev python-dev python-pip
 
 WORKDIR /go
 
