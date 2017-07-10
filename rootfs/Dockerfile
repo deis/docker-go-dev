@@ -57,6 +57,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
   github.com/mitchellh/gox \
   github.com/golang/protobuf/protoc-gen-go \
   github.com/golang/dep/cmd/dep \
+  github.com/haya14busa/goverage \
   github.com/constabulary/gb/... \
   && gometalinter --install \
   && pip install --disable-pip-version-check --no-cache-dir azure-cli==${AZCLI_VERSION} \
