@@ -26,6 +26,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
   unzip \
   upx \
   zip \
+  openssh-client \
   --no-install-recommends \
   && rm -rf /var/lib/apt/lists/* \
   && curl -L https://storage.googleapis.com/golang/go$GO_VERSION.linux-amd64.tar.gz | tar -C /usr/local -xz \
