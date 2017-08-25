@@ -21,6 +21,7 @@ creating [issues][] and submitting [pull requests][].
 * [shellcheck][]: static analysis for shell scripts
 * [test-cover.sh][]: test coverage for multiple go packages
 * [upx][]: executable packer
+* [az][]: Azure cloud command-line tool
 * [Docker][]: Docker binaries to be able to bind mount /var/run/docker.sock in the dev environment container
 
 ## Usage
@@ -48,6 +49,7 @@ The latest deis/go-dev Docker image is available at:
   docker pull deis/go-dev
   ```
 
+[az]: https://github.com/Azure/azure-cli#readme
 [Deis Workflow]: https://deis.com/
 [Docker Hub]: https://hub.docker.com
 [gen-changelog.sh]: https://github.com/deis/docker-go-dev/tree/master/rootfs/usr/local/bin/gen-changelog.sh

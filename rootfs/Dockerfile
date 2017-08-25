@@ -1,6 +1,6 @@
 FROM quay.io/deis/base:v0.3.6
 
-ENV AZCLI_VERSION=2.0.10 \
+ENV AZCLI_VERSION=2.0.14 \
     GO_VERSION=1.8.3 \
     GLIDE_VERSION=v0.12.3 \
     GLIDE_HOME=/root \
