@@ -2,7 +2,7 @@ FROM quay.io/deis/base:v0.3.6
 
 ENV AZCLI_VERSION=2.0.14 \
     GO_VERSION=1.9.1 \
-    GLIDE_VERSION=v0.12.3 \
+    GLIDE_VERSION=v0.13.0 \
     GLIDE_HOME=/root \
     HELM_VERSION=v2.6.0 \
     KUBECTL_VERSION=v1.7.2 \
