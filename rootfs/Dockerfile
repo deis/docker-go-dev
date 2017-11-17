@@ -25,6 +25,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
   python-setuptools \
   unzip \
   upx \
+  wget \
   zip \
   openssh-client \
   --no-install-recommends \
