@@ -64,7 +64,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
   github.com/constabulary/gb/... \
   github.com/dgrijalva/jwt-go/cmd/jwt \
   && gometalinter --install \
-  && pip install --disable-pip-version-check --no-cache-dir azure-cli==${AZCLI_VERSION} \
+  && pip install --disable-pip-version-check --no-cache-dir azure-cli==${AZCLI_VERSION} shyaml \
   && apt-get purge --auto-remove -y libffi-dev python-dev python-pip
 
 WORKDIR /go
