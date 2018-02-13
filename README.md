@@ -27,6 +27,7 @@ creating [issues][] and submitting [pull requests][].
 * [upx][]: executable packer
 * [az][]: Azure cloud command-line tool
 * [Docker][]: Docker binaries to be able to bind mount /var/run/docker.sock in the dev environment container
+* [vim][]: text editor
 
 ## Usage
 
@@ -77,3 +78,4 @@ The latest deis/go-dev Docker image is available at:
 [test-cover.sh]: https://github.com/deis/docker-go-dev/tree/master/rootfs/usr/local/bin/test-cover.sh
 [upx]: http://upx.sourceforge.net/
 [Docker]: http://www.docker.com
+[vim]: http://www.vim.org/
