@@ -46,6 +46,8 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
   && chmod +x /usr/local/bin/kubectl \
   && curl -sSL https://storage.googleapis.com/kubernetes-helm/helm-$HELM_VERSION-linux-amd64.tar.gz \
     | tar -vxz -C /usr/local/bin --strip=1 \
+  && mkdir -p /go/bin \
+  && curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh \
   && apt-get purge -y --auto-remove \
     unzip \
   && apt-get autoremove -y \
@@ -60,7 +62,6 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
   github.com/onsi/ginkgo/ginkgo \
   github.com/mitchellh/gox \
   github.com/golang/protobuf/protoc-gen-go \
-  github.com/golang/dep/cmd/dep \
   github.com/haya14busa/goverage \
   github.com/constabulary/gb/... \
   github.com/dgrijalva/jwt-go/cmd/jwt \
