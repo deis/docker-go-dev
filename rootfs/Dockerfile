@@ -65,6 +65,8 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
   github.com/haya14busa/goverage \
   github.com/constabulary/gb/... \
   github.com/dgrijalva/jwt-go/cmd/jwt \
+  github.com/axw/gocov/gocov \
+  github.com/AlekSi/gocov-xml \
   && gometalinter --install \
   && pip install --disable-pip-version-check --no-cache-dir azure-cli==${AZCLI_VERSION} shyaml \
   && apt-get purge --auto-remove -y libffi-dev python-dev python-pip
