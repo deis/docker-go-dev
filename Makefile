@@ -10,6 +10,11 @@ SHELL_SCRIPTS = /usr/local/bin/test-cover.sh
 DEV_ENV_PREFIX := docker run --rm
 DEV_ENV_CMD := ${DEV_ENV_PREFIX} ${IMAGE}
 
+info:
+	@echo "REGISTRY: ${REGISTRY}"
+	@echo "VERSION:  ${VERSION}"
+	@echo "IMAGE:    ${IMAGE}"
+
 build:
 	docker build -t ${IMAGE} rootfs
 
