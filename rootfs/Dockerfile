@@ -59,6 +59,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
   && rm docker-17.05.0-ce.tgz \
   && go get -u -v \
   github.com/alecthomas/gometalinter \
+  gopkg.in/alecthomas/gometalinter.v2 \
   github.com/onsi/ginkgo/ginkgo \
   github.com/mitchellh/gox \
   github.com/golang/protobuf/protoc-gen-go \
@@ -68,6 +69,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
   github.com/axw/gocov/gocov \
   github.com/AlekSi/gocov-xml \
   && gometalinter --install \
+  && gometalinter.v2 --install \
   && pip install --disable-pip-version-check --no-cache-dir azure-cli==${AZCLI_VERSION} shyaml \
   && apt-get purge --auto-remove -y libffi-dev python-dev python-pip
 
