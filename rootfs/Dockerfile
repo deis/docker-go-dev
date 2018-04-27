@@ -4,6 +4,7 @@ ENV AZCLI_VERSION=2.0.30 \
     GO_VERSION=1.10.1 \
     GLIDE_VERSION=v0.13.1 \
     GLIDE_HOME=/root \
+    GOMETALINTER_VERSION=2.0.5 \
     HELM_VERSION=v2.6.0 \
     KUBECTL_VERSION=v1.9.6 \
     SHELLCHECK_VERSION=v0.4.6 \
@@ -58,8 +59,6 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
   && chmod +x -R /usr/local/bin/docker \
   && rm docker-17.05.0-ce.tgz \
   && go get -u -v \
-  github.com/alecthomas/gometalinter \
-  gopkg.in/alecthomas/gometalinter.v2 \
   github.com/onsi/ginkgo/ginkgo \
   github.com/mitchellh/gox \
   github.com/golang/protobuf/protoc-gen-go \
@@ -68,8 +67,10 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
   github.com/dgrijalva/jwt-go/cmd/jwt \
   github.com/axw/gocov/gocov \
   github.com/AlekSi/gocov-xml \
-  && gometalinter --install \
-  && gometalinter.v2 --install \
+  && curl -fsSLO https://github.com/alecthomas/gometalinter/releases/download/v${GOMETALINTER_VERSION}/gometalinter-${GOMETALINTER_VERSION}-linux-amd64.tar.gz \
+  && tar xzvf gometalinter-${GOMETALINTER_VERSION}-linux-amd64.tar.gz --strip-components=1 -C /usr/local/bin \
+  && ln -s /usr/local/bin/gometalinter /usr/local/bin/gometalinter.v2 \
+  && rm gometalinter-${GOMETALINTER_VERSION}-linux-amd64.tar.gz \
   && pip install --disable-pip-version-check --no-cache-dir azure-cli==${AZCLI_VERSION} shyaml \
   && apt-get purge --auto-remove -y libffi-dev python-dev python-pip
 
