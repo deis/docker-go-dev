@@ -28,6 +28,7 @@ creating [issues][] and submitting [pull requests][].
 * [az][]: Azure cloud command-line tool
 * [Docker][]: Docker binaries to be able to bind mount /var/run/docker.sock in the dev environment container
 * [vim][]: text editor
+* [ruby][]: ruby scripting language
 
 ## Usage
 
@@ -79,3 +80,4 @@ The latest deis/go-dev Docker image is available at:
 [upx]: http://upx.sourceforge.net/
 [Docker]: http://www.docker.com
 [vim]: http://www.vim.org/
+[ruby]: https://www.ruby-lang.org/
