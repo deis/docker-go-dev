@@ -17,6 +17,7 @@ creating [issues][] and submitting [pull requests][].
 * [gb][]: project-based build tool for Go
 * [ginkgo][]: BDD testing framework for Go
 * [glide][]: Go dependency management tool
+* [go-bindata][]: converts any file into go source code
 * [golint][]: Go source code linter
 * [gometalinter][]: run Go lint tools concurrently
 * [gox][]: simple Go cross-compiling tool
@@ -65,6 +66,7 @@ The latest deis/go-dev Docker image is available at:
 [gen-changelog.sh]: https://github.com/deis/docker-go-dev/tree/master/rootfs/usr/local/bin/gen-changelog.sh
 [ginkgo]: https://github.com/onsi/ginkgo
 [glide]: https://github.com/Masterminds/glide
+[go-bindata]: https://github.com/jteeuwen/go-bindata
 [Go]: https://golang.org/
 [golint]: https://github.com/golang/lint
 [gometalinter]: https://github.com/alecthomas/gometalinter
@@ -83,3 +85,4 @@ The latest deis/go-dev Docker image is available at:
 [test-cover.sh]: https://github.com/deis/docker-go-dev/tree/master/rootfs/usr/local/bin/test-cover.sh
 [upx]: http://upx.sourceforge.net/
 [vim]: http://www.vim.org/
+[ruby]: https://www.ruby-lang.org/

@@ -71,6 +71,7 @@ RUN \
     github.com/dgrijalva/jwt-go/cmd/jwt \
     github.com/golang/protobuf/protoc-gen-go \
     github.com/haya14busa/goverage \
+    github.com/jteeuwen/go-bindata/... \
     github.com/mitchellh/gox \
     github.com/onsi/ginkgo/ginkgo \
   && curl -fsSLO https://github.com/alecthomas/gometalinter/releases/download/v${GOMETALINTER_VERSION}/gometalinter-${GOMETALINTER_VERSION}-linux-amd64.tar.gz \
