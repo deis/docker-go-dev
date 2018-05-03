@@ -10,14 +10,14 @@ creating [issues][] and submitting [pull requests][].
 
 ## Image Contents
 
-* based on the [official Go Docker image][]
+* based on [Ubuntu 16.04][]
 * [az][]: Azure cloud command-line tool
 * [dep][]: Go dependency management tool
 * [Docker][]: Docker binaries to be able to bind mount /var/run/docker.sock in the dev environment container
 * [gb][]: project-based build tool for Go
 * [ginkgo][]: BDD testing framework for Go
 * [glide][]: Go dependency management tool
-* [go-bindata][]: converts any file into go source code
+* [go-bindata][]: converts any file into Go source code
 * [golint][]: Go source code linter
 * [gometalinter][]: run Go lint tools concurrently
 * [gox][]: simple Go cross-compiling tool
@@ -76,13 +76,13 @@ The latest deis/go-dev Docker image is available at:
 [jq]: https://stedolan.github.io/jq/
 [jwt]: https://github.com/dgrijalva/jwt-go
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl-overview/
-[official Go Docker image]: https://hub.docker.com/_/golang/
 [pull requests]: https://github.com/deis/docker-go-dev/pulls
 [Quay.io]: https://quay.io
 [ruby]: https://www.ruby-lang.org/
 [shellcheck]: https://github.com/koalaman/shellcheck
 [shyaml]: https://github.com/0k/shyaml
 [test-cover.sh]: https://github.com/deis/docker-go-dev/tree/master/rootfs/usr/local/bin/test-cover.sh
+[Ubuntu 16.04]: https://hub.docker.com/_/ubuntu/
 [upx]: http://upx.sourceforge.net/
 [vim]: http://www.vim.org/
 [ruby]: https://www.ruby-lang.org/
