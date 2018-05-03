@@ -68,6 +68,7 @@ RUN \
     github.com/AlekSi/gocov-xml \
     github.com/axw/gocov/gocov \
     github.com/constabulary/gb/... \
+    github.com/derekparker/delve/cmd/dlv \
     github.com/dgrijalva/jwt-go/cmd/jwt \
     github.com/golang/protobuf/protoc-gen-go \
     github.com/haya14busa/goverage \
