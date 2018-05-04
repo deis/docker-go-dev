@@ -13,6 +13,7 @@ creating [issues][] and submitting [pull requests][].
 * based on [Ubuntu 16.04][]
 * [az][]: Azure cloud command-line tool
 * [dep][]: Go dependency management tool
+* [delve][]: debugger for the Go programming language
 * [Docker][]: Docker binaries to be able to bind mount /var/run/docker.sock in the dev environment container
 * [gb][]: project-based build tool for Go
 * [ginkgo][]: BDD testing framework for Go
@@ -59,6 +60,7 @@ The latest deis/go-dev Docker image is available at:
 
 [az]: https://github.com/Azure/azure-cli#readme
 [Deis Workflow]: https://deis.com/
+[delve]: https://github.com/derekparker/delve
 [dep]: https://github.com/golang/dep
 [Docker Hub]: https://hub.docker.com
 [Docker]: http://www.docker.com
