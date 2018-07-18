@@ -75,6 +75,7 @@ RUN \
     github.com/jteeuwen/go-bindata/... \
     github.com/mitchellh/gox \
     github.com/onsi/ginkgo/ginkgo \
+    github.com/hashicorp/packer \
   && curl -fsSLO https://github.com/alecthomas/gometalinter/releases/download/v${GOMETALINTER_VERSION}/gometalinter-${GOMETALINTER_VERSION}-linux-amd64.tar.gz \
   && tar xzvf gometalinter-${GOMETALINTER_VERSION}-linux-amd64.tar.gz --strip-components=1 -C /usr/local/bin \
   && ln -s /usr/local/bin/gometalinter /usr/local/bin/gometalinter.v2 \
