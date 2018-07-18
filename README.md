@@ -26,6 +26,7 @@ creating [issues][] and submitting [pull requests][].
 * [jq][]: command-line JSON processor
 * [jwt][]: tool for creating and parsing JSON Web Tokens
 * [kubectl][]: Kubernetes command-line client
+* [Packer][]: build automated machine images
 * [ruby][]: ruby scripting language
 * [shellcheck][]: static analysis for shell scripts
 * [shyaml][]: YAML access from the command line
@@ -80,6 +81,7 @@ The latest deis/go-dev Docker image is available at:
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl-overview/
 [pull requests]: https://github.com/deis/docker-go-dev/pulls
 [Quay.io]: https://quay.io
+[Packer]: https://github.com/hashicorp/packer
 [ruby]: https://www.ruby-lang.org/
 [shellcheck]: https://github.com/koalaman/shellcheck
 [shyaml]: https://github.com/0k/shyaml
