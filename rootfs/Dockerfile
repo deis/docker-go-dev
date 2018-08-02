@@ -19,6 +19,7 @@ RUN \
   apt-get update && \
   apt-get upgrade -y --no-install-recommends && \
   apt-get install -y --no-install-recommends \
+    azcopy \
     bash \
     build-essential \
     ca-certificates \
