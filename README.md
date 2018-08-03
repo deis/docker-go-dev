@@ -32,6 +32,7 @@ creating [issues][] and submitting [pull requests][].
 * [shellcheck][]: static analysis for shell scripts
 * [shyaml][]: YAML access from the command line
 * [test-cover.sh][]: test coverage for multiple Go packages
+* [unzip][]: list, test, and extract files from ZIP archives
 * [upx][]: executable packer
 * [vim][]: text editor
 
@@ -89,6 +90,7 @@ The latest deis/go-dev Docker image is available at:
 [shyaml]: https://github.com/0k/shyaml
 [test-cover.sh]: https://github.com/deis/docker-go-dev/tree/master/rootfs/usr/local/bin/test-cover.sh
 [Ubuntu 16.04]: https://hub.docker.com/_/ubuntu/
+[unzip]: https://linux.die.net/man/1/unzip
 [upx]: http://upx.sourceforge.net/
 [vim]: http://www.vim.org/
 [ruby]: https://www.ruby-lang.org/
