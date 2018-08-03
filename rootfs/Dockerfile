@@ -84,7 +84,7 @@ RUN \
   && ln -s /usr/local/bin/gometalinter /usr/local/bin/gometalinter.v2 \
   && rm gometalinter-${GOMETALINTER_VERSION}-linux-amd64.tar.gz \
   && pip install --disable-pip-version-check --no-cache-dir azure-cli==${AZCLI_VERSION} shyaml \
-  && apt-get purge --auto-remove -y libffi-dev python-dev python-pip unzip \
+  && apt-get purge --auto-remove -y libffi-dev python-dev python-pip \
   && apt-get autoremove -y \
   && apt-get clean -y \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/man /usr/share/doc
