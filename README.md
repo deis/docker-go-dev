@@ -32,7 +32,7 @@ creating [issues][] and submitting [pull requests][].
 * [shellcheck][]: static analysis for shell scripts
 * [shyaml][]: YAML access from the command line
 * [test-cover.sh][]: test coverage for multiple Go packages
-* [unxip][]: list, test, and extract files from ZIP archives
+* [unzip][]: list, test, and extract files from ZIP archives
 * [upx][]: executable packer
 * [vim][]: text editor
 
