@@ -12,6 +12,7 @@ creating [issues][] and submitting [pull requests][].
 
 * based on [Ubuntu 16.04][]
 * [az][]: Azure cloud command-line tool
+* [azcopy][]: Utility for copying data to/from Microsoft Azure Blob and File storage
 * [dep][]: Go dependency management tool
 * [delve][]: debugger for the Go programming language
 * [Docker][]: Docker binaries to be able to bind mount /var/run/docker.sock in the dev environment container
@@ -60,6 +61,7 @@ The latest deis/go-dev Docker image is available at:
   ```
 
 [az]: https://github.com/Azure/azure-cli#readme
+[azcopy]: https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-linux?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
 [Deis Workflow]: https://deis.com/
 [delve]: https://github.com/derekparker/delve
 [dep]: https://github.com/golang/dep
