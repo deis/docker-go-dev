@@ -31,6 +31,7 @@ RUN \
     man \
     mercurial \
     net-tools \
+    netcat \
     openssh-client \
     procps \
     python \
