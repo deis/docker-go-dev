@@ -7,6 +7,7 @@ ENV AZCLI_VERSION=2.0.45 \
     HELM_VERSION=v2.6.0 \
     KUBECTL_VERSION=v1.9.6 \
     SHELLCHECK_VERSION=v0.4.6 \
+    ETCDCTL_VERSION=v3.1.8 \
     PATH=$PATH:/usr/local/go/bin:/go/bin:/usr/local/bin/docker \
     GOPATH=/go
 
@@ -66,6 +67,10 @@ RUN \
   && tar xzvf docker-17.05.0-ce.tgz -C /usr/local/bin \
   && chmod +x -R /usr/local/bin/docker \
   && rm docker-17.05.0-ce.tgz \
+  && curl -L https://github.com/coreos/etcd/releases/download/$ETCDCTL_VERSION/etcd-$ETCDCTL_VERSION-linux-amd64.tar.gz -o /tmp/etcd-$ETCDCTL_VERSION.tar.gz \
+  && tar -C /tmp -xvzf /tmp/etcd-$ETCDCTL_VERSION.tar.gz --strip-components=1 etcd-$ETCDCTL_VERSION-linux-amd64/etcdctl \
+  && mv /tmp/etcdctl /usr/local/bin/etcdctl-$ETCDCTL_VERSION \
+  && rm /tmp/etcd-$ETCDCTL_VERSION.tar.gz \
   && go get -u -v \
     github.com/AlekSi/gocov-xml \
     github.com/axw/gocov/gocov \
