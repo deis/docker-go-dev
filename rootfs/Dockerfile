@@ -72,7 +72,7 @@ RUN \
   && rm docker-17.05.0-ce.tgz \
   && curl -L https://github.com/coreos/etcd/releases/download/$ETCDCTL_VERSION/etcd-$ETCDCTL_VERSION-linux-amd64.tar.gz -o /tmp/etcd-$ETCDCTL_VERSION.tar.gz \
   && tar -C /tmp -xvzf /tmp/etcd-$ETCDCTL_VERSION.tar.gz --strip-components=1 etcd-$ETCDCTL_VERSION-linux-amd64/etcdctl \
-  && mv /tmp/etcdctl /usr/local/bin/etcdctl-$ETCDCTL_VERSION \
+  && mv /tmp/etcdctl /usr/local/bin/etcdctl \
   && rm /tmp/etcd-$ETCDCTL_VERSION.tar.gz \
   && go get -u -v \
     github.com/AlekSi/gocov-xml \
