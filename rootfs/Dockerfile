@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 
 LABEL name="deis-go-dev"
 
-ENV AZCLI_VERSION=2.0.45 \
+ENV AZCLI_VERSION=2.0.46 \
     GO_VERSION=1.11 \
     GLIDE_VERSION=v0.13.1 \
     GLIDE_HOME=/root \
