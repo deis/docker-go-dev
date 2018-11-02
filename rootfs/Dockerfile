@@ -10,7 +10,7 @@ ENV AZCLI_VERSION=2.0.46 \
     KUBECTL_VERSION=v1.9.6 \
     SHELLCHECK_VERSION=v0.4.6 \
     ETCDCTL_VERSION=v3.1.8 \
-    GOLANGCI_LINT_VERSION=v1.10.2 \
+    GOLANGCI_LINT_VERSION=v1.11.2 \
     PATH=$PATH:/usr/local/go/bin:/go/bin:/usr/local/bin/docker \
     GOPATH=/go
 
