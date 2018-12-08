@@ -63,7 +63,7 @@ RUN \
   && curl -sSL https://github.com/helm/helm/archive/$HELM_VERSION.tar.gz \
     | tar -vxz -C $GOPATH/src/k8s.io/helm --strip=1 \
   && cd $GOPATH/src/k8s.io/helm && make bootstrap build \
-  && cp bin/helm /usr/local/bin && cd && rm -rf $GOPATH/src/k8s.io/helm \
+  && cp ./bin/* /usr/local/bin && cd && rm -rf $GOPATH/src/k8s.io/helm \
   && mkdir -p /go/bin \
   && curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh \
   && wget https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod/pool/main/a/azcopy/azcopy_7.2.0-netcore_ubuntu16.04_x64.deb \
