@@ -6,7 +6,7 @@ ENV AZCLI_VERSION=2.0.46 \
     GO_VERSION=1.11.2 \
     GLIDE_VERSION=v0.13.1 \
     GLIDE_HOME=/root \
-    HELM_VERSION=v2.6.0 \
+    HELM_VERSION=v2.12.0 \
     KUBECTL_VERSION=v1.9.6 \
     SHELLCHECK_VERSION=v0.4.6 \
     ETCDCTL_VERSION=v3.1.8 \
@@ -59,8 +59,11 @@ RUN \
   && rm /tmp/protoc.zip \
   && curl -sSL https://storage.googleapis.com/kubernetes-release/release/$KUBECTL_VERSION/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl \
   && chmod +x /usr/local/bin/kubectl \
-  && curl -sSL https://storage.googleapis.com/kubernetes-helm/helm-$HELM_VERSION-linux-amd64.tar.gz \
-    | tar -vxz -C /usr/local/bin --strip=1 \
+  && mkdir -p $GOPATH/src/k8s.io/helm \
+  && curl -sSL https://github.com/helm/helm/archive/$HELM_VERSION.tar.gz \
+    | tar -vxz -C $GOPATH/src/k8s.io/helm --strip=1 \
+  && cd $GOPATH/src/k8s.io/helm && make bootstrap build \
+  && cp ./bin/* /usr/local/bin && cd && rm -rf $GOPATH/src/k8s.io/helm \
   && mkdir -p /go/bin \
   && curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh \
   && wget https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod/pool/main/a/azcopy/azcopy_7.2.0-netcore_ubuntu16.04_x64.deb \
