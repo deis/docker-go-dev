@@ -10,6 +10,7 @@ ENV AZCLI_VERSION=2.0.46 \
     KUBECTL_VERSION=v1.9.6 \
     SHELLCHECK_VERSION=v0.4.6 \
     ETCDCTL_VERSION=v3.1.8 \
+    GOLANGCI_LINT_VERSION=v1.11.2 \
     PATH=$PATH:/usr/local/go/bin:/go/bin:/usr/local/bin/docker \
     GOPATH=/go
 
@@ -92,6 +93,7 @@ RUN \
     gopkg.in/alecthomas/gometalinter.v2 \
   && ln -s ${GOPATH}/bin/gometalinter.v2 ${GOPATH}/bin/gometalinter \
   && gometalinter.v2 --install \
+  && curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b $GOPATH/bin $GOLANGCI_LINT_VERSION \
   && pip install --disable-pip-version-check --no-cache-dir azure-cli==${AZCLI_VERSION} shyaml \
   && apt-get purge --auto-remove -y libffi-dev python-dev python-pip \
   && apt-get autoremove -y \
