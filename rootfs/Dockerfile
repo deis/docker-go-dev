@@ -69,6 +69,7 @@ RUN \
   && curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh \
   && wget https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod/pool/main/a/azcopy/azcopy_7.2.0-netcore_ubuntu16.04_x64.deb \
   && dpkg -i azcopy_7.2.0-netcore_ubuntu16.04_x64.deb || echo "missing dependencies" \
+  && rm -f azcopy_7.2.0-netcore_ubuntu16.04_x64.deb \
   && apt-get update && apt-get -f -y install \
   && curl -fsSLO https://get.docker.com/builds/Linux/x86_64/docker-17.05.0-ce.tgz \
   && tar xzvf docker-17.05.0-ce.tgz -C /usr/local/bin \
