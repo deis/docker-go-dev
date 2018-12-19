@@ -22,6 +22,7 @@ creating [issues][] and submitting [pull requests][].
 * [go-bindata][]: converts any file into Go source code
 * [golint][]: Go source code linter
 * [gometalinter][]: run Go lint tools concurrently
+* [golangci-lint][]: concurrent runner for Go linting tools
 * [gox][]: simple Go cross-compiling tool
 * [helm][]: Kubernetes package manager
 * [jq][]: command-line JSON processor
@@ -76,6 +77,7 @@ The latest deis/go-dev Docker image is available at:
 [Go]: https://golang.org/
 [golint]: https://github.com/golang/lint
 [gometalinter]: https://github.com/alecthomas/gometalinter
+[golangci-lint]: https://github.com/golangci/golangci-lint
 [gox]: https://github.com/mitchellh/gox
 [helm]: https://github.com/kubernetes/helm
 [issues]: https://github.com/deis/docker-go-dev/issues
