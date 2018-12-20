@@ -27,6 +27,7 @@ creating [issues][] and submitting [pull requests][].
 * [helm][]: Kubernetes package manager
 * [jq][]: command-line JSON processor
 * [jwt][]: tool for creating and parsing JSON Web Tokens
+* [k][]: automatically run the correct version of `kubectl` every time
 * [kubectl][]: Kubernetes command-line client
 * [Packer][]: build automated machine images
 * [ruby][]: ruby scripting language
@@ -83,6 +84,7 @@ The latest deis/go-dev Docker image is available at:
 [issues]: https://github.com/deis/docker-go-dev/issues
 [jq]: https://stedolan.github.io/jq/
 [jwt]: https://github.com/dgrijalva/jwt-go
+[k]: https://github.com/jakepearson/k
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl-overview/
 [pull requests]: https://github.com/deis/docker-go-dev/pulls
 [Quay.io]: https://quay.io
