@@ -99,7 +99,8 @@ RUN \
   && apt-get purge --auto-remove -y libffi-dev python-dev python-pip \
   && apt-get autoremove -y \
   && apt-get clean -y \
-  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/man /usr/share/doc
+  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/man /usr/share/doc $GOPATH/pkg/* $GOPATH/src/* /root/cache /root/.cache \
+  && go clean -cache -testcache -modcache
 
 WORKDIR /go
 
