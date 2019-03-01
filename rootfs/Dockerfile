@@ -2,15 +2,15 @@ FROM ubuntu:16.04
 
 LABEL name="deis-go-dev"
 
-ENV AZCLI_VERSION=2.0.46 \
+ENV AZCLI_VERSION=2.0.59 \
     GO_VERSION=1.12 \
     GLIDE_VERSION=v0.13.1 \
     GLIDE_HOME=/root \
-    HELM_VERSION=v2.12.3 \
-    KUBECTL_VERSION=v1.10.12 \
+    HELM_VERSION=v2.13.0 \
+    KUBECTL_VERSION=v1.10.13 \
     SHELLCHECK_VERSION=v0.4.6 \
     ETCDCTL_VERSION=v3.1.8 \
-    GOLANGCI_LINT_VERSION=v1.12.5 \
+    GOLANGCI_LINT_VERSION=v1.15.0 \
     PATH=$PATH:/usr/local/go/bin:/go/bin:/usr/local/bin/docker \
     GOPATH=/go
 
