@@ -1,6 +1,7 @@
 FROM ubuntu:16.04
 
-LABEL name="deis-go-dev"
+LABEL name="deis-go-dev" \
+      maintainer="Matt Boersma <matt.boersma@microsoft.com>"
 
 ENV AZCLI_VERSION=2.0.59 \
     GO_VERSION=1.12.1 \
