@@ -2,14 +2,15 @@ FROM ubuntu:16.04
 
 LABEL name="deis-go-dev"
 
-ENV AZCLI_VERSION=2.0.59 \
+ENV AZCLI_VERSION=2.0.60 \
     GO_VERSION=1.12.1 \
-    GLIDE_VERSION=v0.13.1 \
+    GLIDE_VERSION=v0.13.2 \
     GLIDE_HOME=/root \
     HELM_VERSION=v2.13.0 \
     KUBECTL_VERSION=v1.10.13 \
     ETCDCTL_VERSION=v3.1.8 \
     GOLANGCI_LINT_VERSION=v1.15.0 \
+    PROTOBUF_VERSION=3.7.0 \
     PATH=$PATH:/usr/local/go/bin:/go/bin:/usr/local/bin/docker \
     GOPATH=/go
 
@@ -48,21 +49,21 @@ RUN \
     vim \
     wget \
     zip \
-  && curl -L https://storage.googleapis.com/golang/go$GO_VERSION.linux-amd64.tar.gz | tar -C /usr/local -xz \
-  && curl -sSL https://github.com/Masterminds/glide/releases/download/$GLIDE_VERSION/glide-$GLIDE_VERSION-linux-amd64.tar.gz \
+  && curl -L https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.gz | tar -C /usr/local -xz \
+  && curl -sSL https://github.com/Masterminds/glide/releases/download/${GLIDE_VERSION}/glide-${GLIDE_VERSION}-linux-amd64.tar.gz \
     | tar -vxz -C /usr/local/bin --strip=1 \
   && curl -L https://storage.googleapis.com/k8s-claimer/git-e4dcc16/k8s-claimer-git-e4dcc16-linux-amd64 -o /usr/local/bin/k8s-claimer \
 	&& chmod +x /usr/local/bin/k8s-claimer \
-  && curl -sSL -o /tmp/protoc.zip https://github.com/google/protobuf/releases/download/v3.1.0/protoc-3.1.0-linux-x86_64.zip \
+  && curl -sSL -o /tmp/protoc.zip https://github.com/google/protobuf/releases/download/v${PROTOBUF_VERSION}/protoc-${PROTOBUF_VERSION}-linux-x86_64.zip \
   && unzip /tmp/protoc.zip 'bin/protoc' -d /usr/local \
   && rm /tmp/protoc.zip \
-  && curl -sSL https://storage.googleapis.com/kubernetes-release/release/$KUBECTL_VERSION/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl \
+  && curl -sSL https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl \
   && chmod +x /usr/local/bin/kubectl \
-  && mkdir -p $GOPATH/src/k8s.io/helm \
-  && curl -sSL https://github.com/helm/helm/archive/$HELM_VERSION.tar.gz \
-    | tar -vxz -C $GOPATH/src/k8s.io/helm --strip=1 \
-  && cd $GOPATH/src/k8s.io/helm && make bootstrap build \
-  && cp ./bin/* /usr/local/bin && cd && rm -rf $GOPATH/src/k8s.io/helm \
+  && mkdir -p ${GOPATH}/src/k8s.io/helm \
+  && curl -sSL https://github.com/helm/helm/archive/${HELM_VERSION}.tar.gz \
+    | tar -vxz -C ${GOPATH}/src/k8s.io/helm --strip=1 \
+  && cd ${GOPATH}/src/k8s.io/helm && make bootstrap build \
+  && cp ./bin/* /usr/local/bin && cd && rm -rf ${GOPATH}/src/k8s.io/helm \
   && mkdir -p /go/bin \
   && curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh \
   && wget https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod/pool/main/a/azcopy/azcopy_7.2.0-netcore_ubuntu16.04_x64.deb \
@@ -73,10 +74,10 @@ RUN \
   && tar xzvf docker-17.05.0-ce.tgz -C /usr/local/bin \
   && chmod +x -R /usr/local/bin/docker \
   && rm docker-17.05.0-ce.tgz \
-  && curl -L https://github.com/coreos/etcd/releases/download/$ETCDCTL_VERSION/etcd-$ETCDCTL_VERSION-linux-amd64.tar.gz -o /tmp/etcd-$ETCDCTL_VERSION.tar.gz \
-  && tar -C /tmp -xvzf /tmp/etcd-$ETCDCTL_VERSION.tar.gz --strip-components=1 etcd-$ETCDCTL_VERSION-linux-amd64/etcdctl \
+  && curl -L https://github.com/coreos/etcd/releases/download/${ETCDCTL_VERSION}/etcd-${ETCDCTL_VERSION}-linux-amd64.tar.gz -o /tmp/etcd-${ETCDCTL_VERSION}.tar.gz \
+  && tar -C /tmp -xvzf /tmp/etcd-${ETCDCTL_VERSION}.tar.gz --strip-components=1 etcd-${ETCDCTL_VERSION}-linux-amd64/etcdctl \
   && mv /tmp/etcdctl /usr/local/bin/etcdctl \
-  && rm /tmp/etcd-$ETCDCTL_VERSION.tar.gz \
+  && rm /tmp/etcd-${ETCDCTL_VERSION}.tar.gz \
   && go get -u -v \
     github.com/AlekSi/gocov-xml \
     github.com/axw/gocov/gocov \
@@ -92,12 +93,12 @@ RUN \
     gopkg.in/alecthomas/gometalinter.v2 \
   && ln -s ${GOPATH}/bin/gometalinter.v2 ${GOPATH}/bin/gometalinter \
   && gometalinter.v2 --install \
-  && curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b $GOPATH/bin $GOLANGCI_LINT_VERSION \
+  && curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b ${GOPATH}/bin ${GOLANGCI_LINT_VERSION} \
   && pip install --disable-pip-version-check --no-cache-dir azure-cli==${AZCLI_VERSION} shyaml \
   && apt-get purge --auto-remove -y libffi-dev python-dev python-pip \
   && apt-get autoremove -y \
   && apt-get clean -y \
-  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/man /usr/share/doc $GOPATH/pkg/* $GOPATH/src/* /root/cache /root/.cache \
+  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/man /usr/share/doc ${GOPATH}/pkg/* ${GOPATH}/src/* /root/cache /root/.cache \
   && go clean -cache -testcache -modcache
 
 WORKDIR /go
