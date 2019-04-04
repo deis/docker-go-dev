@@ -48,6 +48,7 @@ RUN \
     upx \
     util-linux \
     vim \
+    wamerican \
     wget \
     zip \
   && curl -L https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.gz | tar -C /usr/local -xz \

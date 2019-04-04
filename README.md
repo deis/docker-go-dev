@@ -37,7 +37,7 @@ creating [issues][] and submitting [pull requests][].
 * [unzip][]: list, test, and extract files from ZIP archives
 * [upx][]: executable packer
 * [vim][]: text editor
-
+* [wamerican][]: American English dictionary words for /usr/share/dict
 ## Usage
 
 Mount your local Go code into a container's `$GOPATH` to run any `go` command or one of the
@@ -98,3 +98,4 @@ The latest deis/go-dev Docker image is available at:
 [upx]: http://upx.sourceforge.net/
 [vim]: http://www.vim.org/
 [ruby]: https://www.ruby-lang.org/
+[wamerican]: https://packages.ubuntu.com/xenial/wamerican
