@@ -68,6 +68,8 @@ RUN \
   && cp ./bin/* /usr/local/bin && cd && rm -rf ${GOPATH}/src/k8s.io/helm \
   && mkdir -p /go/bin \
   && curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh \
+  && curl -sSL https://aka.ms/downloadazcopy-v10-linux | tar -vxz -C /usr/local/bin --strip=1 \
+  && mv /usr/local/bin/azcopy /usr/local/bin/azcopy-preview \
   && wget https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod/pool/main/a/azcopy/azcopy_7.2.0-netcore_ubuntu16.04_x64.deb \
   && dpkg -i azcopy_7.2.0-netcore_ubuntu16.04_x64.deb || echo "missing dependencies" \
   && rm -f azcopy_7.2.0-netcore_ubuntu16.04_x64.deb \
