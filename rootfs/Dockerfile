@@ -3,14 +3,14 @@ FROM ubuntu:16.04
 LABEL name="deis-go-dev" \
       maintainer="Matt Boersma <matt.boersma@microsoft.com>"
 
-ENV AZCLI_VERSION=2.0.60 \
+ENV AZCLI_VERSION=2.0.61 \
     GO_VERSION=1.12.2 \
     GLIDE_VERSION=v0.13.2 \
     GLIDE_HOME=/root \
-    HELM_VERSION=v2.13.0 \
+    HELM_VERSION=v2.13.1 \
     KUBECTL_VERSION=v1.10.13 \
     ETCDCTL_VERSION=v3.1.8 \
-    GOLANGCI_LINT_VERSION=v1.15.0 \
+    GOLANGCI_LINT_VERSION=v1.16.0 \
     PROTOBUF_VERSION=3.7.0 \
     SHELLCHECK_VERSION=v0.6.0 \
     PATH=$PATH:/usr/local/go/bin:/go/bin:/usr/local/bin/docker \
@@ -68,6 +68,8 @@ RUN \
   && cp ./bin/* /usr/local/bin && cd && rm -rf ${GOPATH}/src/k8s.io/helm \
   && mkdir -p /go/bin \
   && curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh \
+  && curl -sSL https://aka.ms/downloadazcopy-v10-linux | tar -vxz -C /usr/local/bin --strip=1 \
+  && mv /usr/local/bin/azcopy /usr/local/bin/azcopy-preview \
   && wget https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod/pool/main/a/azcopy/azcopy_7.2.0-netcore_ubuntu16.04_x64.deb \
   && dpkg -i azcopy_7.2.0-netcore_ubuntu16.04_x64.deb || echo "missing dependencies" \
   && rm -f azcopy_7.2.0-netcore_ubuntu16.04_x64.deb \
