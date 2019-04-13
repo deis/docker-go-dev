@@ -3,7 +3,7 @@ FROM ubuntu:16.04
 LABEL name="deis-go-dev" \
       maintainer="Matt Boersma <matt.boersma@microsoft.com>"
 
-ENV AZCLI_VERSION=2.0.61 \
+ENV AZCLI_VERSION=2.0.62 \
     GO_VERSION=1.12.2 \
     GLIDE_VERSION=v0.13.2 \
     GLIDE_HOME=/root \
