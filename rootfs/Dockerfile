@@ -54,18 +54,14 @@ RUN \
   && curl -L https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.gz | tar -C /usr/local -xz \
   && curl -sSL https://github.com/Masterminds/glide/releases/download/${GLIDE_VERSION}/glide-${GLIDE_VERSION}-linux-amd64.tar.gz \
     | tar -vxz -C /usr/local/bin --strip=1 \
-  && curl -L https://storage.googleapis.com/k8s-claimer/git-e4dcc16/k8s-claimer-git-e4dcc16-linux-amd64 -o /usr/local/bin/k8s-claimer \
-	&& chmod +x /usr/local/bin/k8s-claimer \
   && curl -sSL -o /tmp/protoc.zip https://github.com/google/protobuf/releases/download/v${PROTOBUF_VERSION}/protoc-${PROTOBUF_VERSION}-linux-x86_64.zip \
   && unzip /tmp/protoc.zip 'bin/protoc' -d /usr/local \
   && rm /tmp/protoc.zip \
   && curl -sSL https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl \
   && chmod +x /usr/local/bin/kubectl \
   && mkdir -p ${GOPATH}/src/k8s.io/helm \
-  && curl -sSL https://github.com/helm/helm/archive/${HELM_VERSION}.tar.gz \
-    | tar -vxz -C ${GOPATH}/src/k8s.io/helm --strip=1 \
-  && cd ${GOPATH}/src/k8s.io/helm && make bootstrap build \
-  && cp ./bin/* /usr/local/bin && cd && rm -rf ${GOPATH}/src/k8s.io/helm \
+  && curl -sSL https://storage.googleapis.com/kubernetes-helm/helm-${HELM_VERSION}-linux-amd64.tar.gz \
+    | tar -vxz -C /usr/local/bin --strip=1 \
   && mkdir -p /go/bin \
   && curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh \
   && curl -sSL https://aka.ms/downloadazcopy-v10-linux | tar -vxz -C /usr/local/bin --strip=1 \
