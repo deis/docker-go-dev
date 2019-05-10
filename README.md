@@ -32,6 +32,7 @@ creating [issues][] and submitting [pull requests][].
 * [Packer][]: build automated machine images
 * [ruby][]: ruby scripting language
 * [shellcheck][]: static analysis for shell scripts
+* [shfmt][]: shell script parser, formatter, and interpreter
 * [shyaml][]: YAML access from the command line
 * [test-cover.sh][]: test coverage for multiple Go packages
 * [unzip][]: list, test, and extract files from ZIP archives
@@ -91,6 +92,7 @@ The latest deis/go-dev Docker image is available at:
 [Packer]: https://github.com/hashicorp/packer
 [ruby]: https://www.ruby-lang.org/
 [shellcheck]: https://github.com/koalaman/shellcheck
+[shfmt]: https://github.com/mvdan/sh
 [shyaml]: https://github.com/0k/shyaml
 [test-cover.sh]: https://github.com/deis/docker-go-dev/tree/master/rootfs/usr/local/bin/test-cover.sh
 [Ubuntu 16.04]: https://hub.docker.com/_/ubuntu/
