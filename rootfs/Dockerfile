@@ -5,7 +5,7 @@ LABEL name="deis-go-dev" \
 
 ENV AZCLI_VERSION=2.0.66 \
     GO_VERSION=1.12.6 \
-    GLIDE_VERSION=v0.13.2 \
+    GLIDE_VERSION=v0.13.3 \
     GLIDE_HOME=/root \
     HELM_VERSION=v2.14.1 \
     KUBECTL_VERSION=v1.12.8 \
