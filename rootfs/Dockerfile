@@ -4,10 +4,10 @@ LABEL name="deis-go-dev" \
       maintainer="Matt Boersma <matt.boersma@microsoft.com>"
 
 ENV AZCLI_VERSION=2.0.66 \
-    GO_VERSION=1.12.6 \
+    GO_VERSION=1.12.7 \
     GLIDE_VERSION=v0.13.3 \
     GLIDE_HOME=/root \
-    HELM_VERSION=v2.14.1 \
+    HELM_VERSION=v2.14.2 \
     KUBECTL_VERSION=v1.12.8 \
     ETCDCTL_VERSION=v3.1.8 \
     GOLANGCI_LINT_VERSION=v1.17.1 \
