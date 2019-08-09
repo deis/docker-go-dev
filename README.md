@@ -10,7 +10,7 @@ creating [issues][] and submitting [pull requests][].
 
 ## Image Contents
 
-* based on [Ubuntu 16.04][]
+* based on [Ubuntu 18.04][]
 * [az][]: Azure cloud command-line tool
 * [azcopy][]: Utility for copying data to/from Microsoft Azure Blob and File storage
 * [dep][]: Go dependency management tool
@@ -95,7 +95,7 @@ The latest deis/go-dev Docker image is available at:
 [shfmt]: https://github.com/mvdan/sh
 [shyaml]: https://github.com/0k/shyaml
 [test-cover.sh]: https://github.com/deis/docker-go-dev/tree/master/rootfs/usr/local/bin/test-cover.sh
-[Ubuntu 16.04]: https://hub.docker.com/_/ubuntu/
+[Ubuntu 18.04]: https://hub.docker.com/_/ubuntu/
 [unzip]: https://linux.die.net/man/1/unzip
 [upx]: http://upx.sourceforge.net/
 [vim]: http://www.vim.org/
