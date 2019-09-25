@@ -4,7 +4,7 @@ LABEL name="deis-go-dev" \
       maintainer="Matt Boersma <matt.boersma@microsoft.com>"
 
 ENV AZCLI_VERSION=2.0.72 \
-    GO_VERSION=1.12.9 \
+    GO_VERSION=1.12.10 \
     GLIDE_VERSION=v0.13.3 \
     GLIDE_HOME=/root \
     HELM_VERSION=v2.14.3 \
