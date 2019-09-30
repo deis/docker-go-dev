@@ -23,6 +23,9 @@ RUN \
   sed -i -e 's/^deb-src/#deb-src/' /etc/apt/sources.list && \
   export DEBIAN_FRONTEND=noninteractive && \
   apt-get update && \
+  apt-get install -y software-properties-common && \
+  add-apt-repository ppa:rmescandon/yq && \
+  apt-get update && \
   apt-get upgrade -y --no-install-recommends && \
   apt-get install -y --no-install-recommends \
     bash \
@@ -53,6 +56,7 @@ RUN \
     vim \
     wamerican \
     wget \
+    yq \
     zip \
   && curl -L https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.gz | tar -C /usr/local -xz \
   && curl -sSL https://github.com/Masterminds/glide/releases/download/${GLIDE_VERSION}/glide-${GLIDE_VERSION}-linux-amd64.tar.gz \
