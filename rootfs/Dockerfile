@@ -4,6 +4,7 @@ LABEL name="deis-go-dev" \
       maintainer="Matt Boersma <matt.boersma@microsoft.com>"
 
 ENV AZCLI_VERSION=2.0.75 \
+    DOCKER_VERSION=19.03.4 \
     GO_VERSION=1.12.12 \
     GLIDE_VERSION=v0.13.3 \
     GLIDE_HOME=/root \
@@ -76,10 +77,10 @@ RUN \
   && curl -sSL https://aka.ms/downloadazcopylinux64 | tar -vxz -C /tmp \
   && /tmp/install.sh \
   && apt-get update && apt-get -f -y install \
-  && curl -fsSLO https://get.docker.com/builds/Linux/x86_64/docker-17.05.0-ce.tgz \
-  && tar xzvf docker-17.05.0-ce.tgz -C /usr/local/bin \
+  && curl -fsSLO https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKER_VERSION}.tgz \
+  && tar xzvf docker-${DOCKER_VERSION}.tgz -C /usr/local/bin \
   && chmod +x -R /usr/local/bin/docker \
-  && rm docker-17.05.0-ce.tgz \
+  && rm docker-${DOCKER_VERSION}.tgz \
   && curl -L https://github.com/coreos/etcd/releases/download/${ETCDCTL_VERSION}/etcd-${ETCDCTL_VERSION}-linux-amd64.tar.gz -o /tmp/etcd-${ETCDCTL_VERSION}.tar.gz \
   && tar -C /tmp -xvzf /tmp/etcd-${ETCDCTL_VERSION}.tar.gz --strip-components=1 etcd-${ETCDCTL_VERSION}-linux-amd64/etcdctl \
   && mv /tmp/etcdctl /usr/local/bin/etcdctl \
