@@ -26,9 +26,11 @@ RUN \
   apt-get update && \
   apt-get install -y software-properties-common && \
   add-apt-repository ppa:rmescandon/yq && \
+  apt-add-repository --yes --update ppa:ansible/ansible && \
   apt-get update && \
   apt-get upgrade -y --no-install-recommends && \
   apt-get install -y --no-install-recommends \
+    ansible \
     bash \
     build-essential \
     ca-certificates \
