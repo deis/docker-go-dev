@@ -36,9 +36,9 @@ if [ -z "$TARGET_VERSION" ]; then
   fi
 fi
 
-# Default to kubectl v1.16.2 if TARGET_VERSION was unset and `kubectl version` failed
+# Default to kubectl v1.16.3 if TARGET_VERSION was unset and `kubectl version` failed
 if [ "$TARGET_VERSION" == "null" ]; then
-  TARGET_VERSION=v1.16.2
+  TARGET_VERSION=v1.16.3
 fi
 
 # Fill the cache if possible
