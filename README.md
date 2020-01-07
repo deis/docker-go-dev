@@ -4,7 +4,7 @@
 
 A [Go][] language development toolbox.
 
-Many [Deis Workflow][] components use this Docker image as a standard build and test environment,
+Some Azure projects use this Docker image as a standard build and test environment,
 but it is intended to be useful to any Go developer. Please help make deis/go-dev better by
 creating [issues][] and submitting [pull requests][].
 
@@ -66,7 +66,6 @@ The latest deis/go-dev Docker image is available at:
 
 [az]: https://github.com/Azure/azure-cli#readme
 [azcopy]: https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-linux?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-[Deis Workflow]: https://deis.com/
 [delve]: https://github.com/derekparker/delve
 [dep]: https://github.com/golang/dep
 [Docker Hub]: https://hub.docker.com
