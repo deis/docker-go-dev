@@ -14,7 +14,7 @@ ENV AZCLI_VERSION=2.0.80 \
     GOLANGCI_LINT_VERSION=v1.23.1 \
     PROTOBUF_VERSION=3.7.0 \
     SHELLCHECK_VERSION=v0.7.0 \
-    SHFMT_VERSION=3.0.1 \
+    SHFMT_VERSION=3.0.2 \
     PATH=$PATH:/usr/local/go/bin:/go/bin:/usr/local/bin/docker \
     GOPATH=/go
 
@@ -105,9 +105,8 @@ RUN \
   && curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b ${GOPATH}/bin ${GOLANGCI_LINT_VERSION} \
   && curl -o /usr/local/bin/shellcheck -sSL https://shellcheck.storage.googleapis.com/shellcheck-${SHELLCHECK_VERSION}.linux-x86_64 \
   && chmod +x /usr/local/bin/shellcheck \
-  && go get -u mvdan.cc/sh/cmd/shfmt \
-  && git -C "$GOPATH/src/mvdan.cc/sh" checkout -q "v$SHFMT_VERSION" \
-  && go install -a -ldflags '-extldflags "-static"' mvdan.cc/sh/cmd/shfmt \
+  && curl -o /usr/local/bin/shfmt -sSL https://github.com/mvdan/sh/releases/download/v{SHFMT_VERSION}/shfmt_v{SHFMT_VERSION}_linux_amd64 \
+  && chmod +x /usr/local/bin/shfmt \
   && pip install --disable-pip-version-check --no-cache-dir azure-cli==${AZCLI_VERSION} shyaml \
   && apt-get purge --auto-remove -y libffi-dev python-dev python-pip \
   && apt-get autoremove -y \
