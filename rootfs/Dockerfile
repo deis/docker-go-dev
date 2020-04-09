@@ -47,10 +47,9 @@ RUN \
     netcat \
     openssh-client \
     procps \
-    python \
-    python-dev \
+    python3 \
+    python3-dev \
     python3-pip \
-    python-setuptools \
     python3-setuptools \
     rsync \
     ruby \
@@ -109,7 +108,7 @@ RUN \
   && curl -o /usr/local/bin/shfmt -sSL https://github.com/mvdan/sh/releases/download/v{SHFMT_VERSION}/shfmt_v{SHFMT_VERSION}_linux_amd64 \
   && chmod +x /usr/local/bin/shfmt \
   && pip3 install --disable-pip-version-check --no-cache-dir azure-cli==${AZCLI_VERSION} shyaml \
-  && apt-get purge --auto-remove -y libffi-dev python-dev python3-pip \
+  && apt-get purge --auto-remove -y libffi-dev python3-dev python3-pip \
   && apt-get autoremove -y \
   && apt-get clean -y \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/man /usr/share/doc ${GOPATH}/pkg/* ${GOPATH}/src/* /root/cache /root/.cache \
