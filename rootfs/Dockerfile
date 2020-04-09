@@ -3,9 +3,9 @@ FROM ubuntu:18.04
 LABEL name="deis-go-dev" \
       maintainer="Matt Boersma <matt.boersma@microsoft.com>"
 
-ENV AZCLI_VERSION=2.2.0 \
+ENV AZCLI_VERSION=2.3.1 \
     DOCKER_VERSION=19.03.4 \
-    GO_VERSION=1.14.1 \
+    GO_VERSION=1.14.2 \
     GLIDE_VERSION=v0.13.3 \
     GLIDE_HOME=/root \
     HELM_VERSION=v2.16.3 \
@@ -47,10 +47,10 @@ RUN \
     netcat \
     openssh-client \
     procps \
-    python \
-    python-dev \
-    python-pip \
-    python-setuptools \
+    python3 \
+    python3-dev \
+    python3-pip \
+    python3-setuptools \
     rsync \
     ruby \
     unzip \
@@ -107,8 +107,8 @@ RUN \
   && chmod +x /usr/local/bin/shellcheck \
   && curl -o /usr/local/bin/shfmt -sSL https://github.com/mvdan/sh/releases/download/v{SHFMT_VERSION}/shfmt_v{SHFMT_VERSION}_linux_amd64 \
   && chmod +x /usr/local/bin/shfmt \
-  && pip install --disable-pip-version-check --no-cache-dir azure-cli==${AZCLI_VERSION} shyaml \
-  && apt-get purge --auto-remove -y libffi-dev python-dev python-pip \
+  && pip3 install --disable-pip-version-check --no-cache-dir azure-cli==${AZCLI_VERSION} shyaml \
+  && apt-get purge --auto-remove -y libffi-dev python3-dev python3-pip \
   && apt-get autoremove -y \
   && apt-get clean -y \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/man /usr/share/doc ${GOPATH}/pkg/* ${GOPATH}/src/* /root/cache /root/.cache \
