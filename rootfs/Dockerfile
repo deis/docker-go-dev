@@ -14,7 +14,7 @@ ENV AZCLI_VERSION=2.3.1 \
     GOLANGCI_LINT_VERSION=v1.24.0 \
     PROTOBUF_VERSION=3.7.0 \
     SHELLCHECK_VERSION=v0.7.0 \
-    SHFMT_VERSION=3.0.2 \
+    SHFMT_VERSION=3.1.0 \
     PATH=$PATH:/usr/local/go/bin:/go/bin:/usr/local/bin/docker \
     GOPATH=/go
 
