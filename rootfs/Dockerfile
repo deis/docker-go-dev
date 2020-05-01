@@ -13,7 +13,7 @@ ENV AZCLI_VERSION=2.5.1 \
     ETCDCTL_VERSION=v3.1.8 \
     GOLANGCI_LINT_VERSION=v1.25.1 \
     PROTOBUF_VERSION=3.7.0 \
-    SHELLCHECK_VERSION=v0.7.0 \
+    SHELLCHECK_VERSION=v0.7.1 \
     SHFMT_VERSION=3.1.0 \
     PATH=$PATH:/usr/local/go/bin:/go/bin:/usr/local/bin/docker \
     GOPATH=/go
@@ -103,8 +103,8 @@ RUN \
   && ln -s ${GOPATH}/bin/gometalinter.v2 ${GOPATH}/bin/gometalinter \
   && gometalinter.v2 --install \
   && curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b ${GOPATH}/bin ${GOLANGCI_LINT_VERSION} \
-  && curl -o /usr/local/bin/shellcheck -sSL https://shellcheck.storage.googleapis.com/shellcheck-${SHELLCHECK_VERSION}.linux-x86_64 \
-  && chmod +x /usr/local/bin/shellcheck \
+  && curl -sSL https://github.com/koalaman/shellcheck/releases/download/${SHELLCHECK_VERSION}/shellcheck-${SHELLCHECK_VERSION}.linux.x86_64.tar.xz \
+    | tar -vxJ -C /usr/local/bin --strip=1 \
   && curl -o /usr/local/bin/shfmt -sSL https://github.com/mvdan/sh/releases/download/v{SHFMT_VERSION}/shfmt_v{SHFMT_VERSION}_linux_amd64 \
   && chmod +x /usr/local/bin/shfmt \
   && pip3 install --disable-pip-version-check --no-cache-dir azure-cli==${AZCLI_VERSION} shyaml \
