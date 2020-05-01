@@ -103,8 +103,8 @@ RUN \
   && ln -s ${GOPATH}/bin/gometalinter.v2 ${GOPATH}/bin/gometalinter \
   && gometalinter.v2 --install \
   && curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b ${GOPATH}/bin ${GOLANGCI_LINT_VERSION} \
-  && curl -o /usr/local/bin/shellcheck -sSL https://shellcheck.storage.googleapis.com/shellcheck-${SHELLCHECK_VERSION}.linux-x86_64 \
-  && chmod +x /usr/local/bin/shellcheck \
+  && curl -sSL https://github.com/koalaman/shellcheck/releases/download/${SHELLCHECK_VERSION}/shellcheck-${SHELLCHECK_VERSION}.linux.x86_64.tar.xz \
+    | tar -vxJ -C /usr/local/bin --strip=1 \
   && curl -o /usr/local/bin/shfmt -sSL https://github.com/mvdan/sh/releases/download/v{SHFMT_VERSION}/shfmt_v{SHFMT_VERSION}_linux_amd64 \
   && chmod +x /usr/local/bin/shfmt \
   && pip3 install --disable-pip-version-check --no-cache-dir azure-cli==${AZCLI_VERSION} shyaml \
