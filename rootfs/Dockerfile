@@ -5,7 +5,7 @@ LABEL name="deis-go-dev" \
 
 ENV AZCLI_VERSION=2.5.1 \
     DOCKER_VERSION=19.03.4 \
-    GO_VERSION=1.14.2 \
+    GO_VERSION=1.14.3 \
     GLIDE_VERSION=v0.13.3 \
     GLIDE_HOME=/root \
     HELM_VERSION=v2.16.3 \
@@ -14,7 +14,7 @@ ENV AZCLI_VERSION=2.5.1 \
     GOLANGCI_LINT_VERSION=v1.27.0 \
     PROTOBUF_VERSION=3.7.0 \
     SHELLCHECK_VERSION=v0.7.1 \
-    SHFMT_VERSION=3.1.0 \
+    SHFMT_VERSION=3.1.1 \
     PATH=$PATH:/usr/local/go/bin:/go/bin:/usr/local/bin/docker \
     GOPATH=/go
 
