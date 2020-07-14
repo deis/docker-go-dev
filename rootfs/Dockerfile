@@ -3,7 +3,7 @@ FROM ubuntu:18.04
 LABEL name="deis-go-dev" \
       maintainer="Matt Boersma <matt.boersma@microsoft.com>"
 
-ENV AZCLI_VERSION=2.5.1 \
+ENV AZCLI_VERSION=2.7.0 \
     DOCKER_VERSION=19.03.4 \
     GO_VERSION=1.14.4 \
     GLIDE_VERSION=v0.13.3 \
