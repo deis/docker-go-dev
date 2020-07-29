@@ -5,7 +5,7 @@ LABEL name="deis-go-dev" \
 
 ENV AZCLI_VERSION=2.9.1 \
     DOCKER_VERSION=19.03.4 \
-    GO_VERSION=1.14.6 \
+    GO_VERSION=1.15rc1 \
     GLIDE_VERSION=v0.13.3 \
     GLIDE_HOME=/root \
     HELM_VERSION=v2.16.9 \
@@ -61,7 +61,7 @@ RUN \
     wget \
     yq \
     zip \
-  && curl -L https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.gz | tar -C /usr/local -xz \
+  && curl -L https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz | tar -C /usr/local -xz \
   && curl -sSL https://github.com/Masterminds/glide/releases/download/${GLIDE_VERSION}/glide-${GLIDE_VERSION}-linux-amd64.tar.gz \
     | tar -vxz -C /usr/local/bin --strip=1 \
   && curl -sSL -o /tmp/protoc.zip https://github.com/google/protobuf/releases/download/v${PROTOBUF_VERSION}/protoc-${PROTOBUF_VERSION}-linux-x86_64.zip \
