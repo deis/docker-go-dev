@@ -3,9 +3,9 @@ FROM ubuntu:18.04
 LABEL name="deis-go-dev" \
       maintainer="Matt Boersma <matt.boersma@microsoft.com>"
 
-ENV AZCLI_VERSION=2.9.1 \
+ENV AZCLI_VERSION=2.10.1 \
     DOCKER_VERSION=19.03.4 \
-    GO_VERSION=1.15rc1 \
+    GO_VERSION=1.15rc2 \
     GLIDE_VERSION=v0.13.3 \
     GLIDE_HOME=/root \
     HELM_VERSION=v2.16.9 \
