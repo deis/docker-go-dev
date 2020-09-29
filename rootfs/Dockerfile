@@ -3,7 +3,7 @@ FROM ubuntu:18.04
 LABEL name="deis-go-dev" \
       maintainer="Matt Boersma <matt.boersma@microsoft.com>"
 
-ENV AZCLI_VERSION=2.10.1 \
+ENV AZCLI_VERSION=2.12.1 \
     DOCKER_VERSION=19.03.4 \
     GO_VERSION=1.15.2 \
     GLIDE_VERSION=v0.13.3 \
@@ -11,7 +11,7 @@ ENV AZCLI_VERSION=2.10.1 \
     HELM_VERSION=v2.16.12 \
     KUBECTL_VERSION=v1.16.3 \
     ETCDCTL_VERSION=v3.1.8 \
-    GOLANGCI_LINT_VERSION=v1.30.0 \
+    GOLANGCI_LINT_VERSION=v1.31.0 \
     PROTOBUF_VERSION=3.7.0 \
     SHELLCHECK_VERSION=v0.7.1 \
     SHFMT_VERSION=3.1.2 \
