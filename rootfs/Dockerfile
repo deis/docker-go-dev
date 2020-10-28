@@ -12,6 +12,7 @@ ENV AZCLI_VERSION=2.12.1 \
     KUBECTL_VERSION=v1.16.3 \
     ETCDCTL_VERSION=v3.1.8 \
     GOLANGCI_LINT_VERSION=v1.31.0 \
+    PACKER_VERSION=1.6.1 \
     PROTOBUF_VERSION=3.7.0 \
     SHELLCHECK_VERSION=v0.7.1 \
     SHFMT_VERSION=3.1.2 \
@@ -98,13 +99,14 @@ RUN \
     github.com/jteeuwen/go-bindata/... \
     github.com/mitchellh/gox \
     github.com/onsi/ginkgo/ginkgo \
-    github.com/hashicorp/packer \
     gopkg.in/alecthomas/gometalinter.v2 \
   && ln -s ${GOPATH}/bin/gometalinter.v2 ${GOPATH}/bin/gometalinter \
   && gometalinter.v2 --install \
   && curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b ${GOPATH}/bin ${GOLANGCI_LINT_VERSION} \
   && curl -sSL https://github.com/koalaman/shellcheck/releases/download/${SHELLCHECK_VERSION}/shellcheck-${SHELLCHECK_VERSION}.linux.x86_64.tar.xz \
     | tar -vxJ -C /usr/local/bin --strip=1 \
+  && curl -sSL https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip -o /tmp/packer.zip \
+    && unzip /tmp/packer.zip -d /usr/local/bin \
   && curl -o /usr/local/bin/shfmt -sSL https://github.com/mvdan/sh/releases/download/v{SHFMT_VERSION}/shfmt_v{SHFMT_VERSION}_linux_amd64 \
   && chmod +x /usr/local/bin/shfmt \
   && pip3 install --disable-pip-version-check --no-cache-dir azure-cli==${AZCLI_VERSION} shyaml \
