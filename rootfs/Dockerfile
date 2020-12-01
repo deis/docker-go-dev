@@ -3,7 +3,8 @@ FROM ubuntu:18.04
 LABEL name="deis-go-dev" \
       maintainer="Matt Boersma <matt.boersma@microsoft.com>"
 
-ENV AZCLI_VERSION=2.12.1 \
+ENV ANSIBLE_VERSION=2.10.3 \
+    AZCLI_VERSION=2.12.1 \
     DOCKER_VERSION=19.03.4 \
     GO_VERSION=1.15.3 \
     GLIDE_VERSION=v0.13.3 \
@@ -14,6 +15,7 @@ ENV AZCLI_VERSION=2.12.1 \
     GOLANGCI_LINT_VERSION=v1.31.0 \
     PACKER_VERSION=1.6.1 \
     PROTOBUF_VERSION=3.7.0 \
+    PYWINRM_VERSION=0.4.1 \
     SHELLCHECK_VERSION=v0.7.1 \
     SHFMT_VERSION=3.1.2 \
     PATH=$PATH:/usr/local/go/bin:/go/bin:/usr/local/bin/docker \
@@ -27,11 +29,9 @@ RUN \
   apt-get update && \
   apt-get install -y software-properties-common && \
   add-apt-repository ppa:rmescandon/yq && \
-  apt-add-repository --yes --update ppa:ansible/ansible && \
   apt-get update && \
   apt-get upgrade -y --no-install-recommends && \
   apt-get install -y --no-install-recommends \
-    ansible \
     bash \
     build-essential \
     ca-certificates \
@@ -109,7 +109,7 @@ RUN \
     && unzip /tmp/packer.zip -d /usr/local/bin \
   && curl -o /usr/local/bin/shfmt -sSL https://github.com/mvdan/sh/releases/download/v{SHFMT_VERSION}/shfmt_v{SHFMT_VERSION}_linux_amd64 \
   && chmod +x /usr/local/bin/shfmt \
-  && pip3 install --disable-pip-version-check --no-cache-dir azure-cli==${AZCLI_VERSION} shyaml \
+  && pip3 install --disable-pip-version-check --no-cache-dir azure-cli==${AZCLI_VERSION} shyaml ansible==${ANSIBLE_VERSION} pywinrm==${PYWINRM_VERSION} \
   && apt-get purge --auto-remove -y libffi-dev python3-dev \
   && apt-get autoremove -y \
   && apt-get clean -y \
