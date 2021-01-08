@@ -5,7 +5,7 @@ LABEL name="deis-go-dev" \
 
 ENV ANSIBLE_VERSION=2.10.3 \
     AZCLI_VERSION=2.12.1 \
-    DOCKER_VERSION=19.03.4 \
+    DOCKER_VERSION=20.10.2 \
     GO_VERSION=1.15.5 \
     GLIDE_VERSION=v0.13.3 \
     GLIDE_HOME=/root \
