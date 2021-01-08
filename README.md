@@ -39,6 +39,7 @@ creating [issues][] and submitting [pull requests][].
 * [upx][]: executable packer
 * [vim][]: text editor
 * [wamerican][]: American English dictionary words for /usr/share/dict
+
 ## Usage
 
 Mount your local Go code into a container's `$GOPATH` to run any `go` command or one of the
@@ -52,6 +53,8 @@ $ docker run --rm \
   glide up
 ```
 
+## Releases
+
 The latest deis/go-dev Docker image is available at:
 
 * [Quay.io][]
@@ -64,8 +67,26 @@ The latest deis/go-dev Docker image is available at:
   docker pull deis/go-dev
   ```
 
+To publish a new release of deis/go-dev, use the [deisrel][] tool:
+
+```console
+$ deisrel release docker-go-dev v1.28.7
+Doing a dry run of the component release...
+
+Creating changelog for docker-go-dev with tag v1.28.6 through commit 1a69c5502ef1bca014fbd3581451d1421829a42f
+
+
+### v1.28.6 -> v1.28.7
+...
+```
+
+If the CHANGELOG contents look correct, run the same command again but add the argument `--dry-run=false`.
+You will be prompted to confirm again before any tag or release is written to GitHub.
+
+
 [az]: https://github.com/Azure/azure-cli#readme
 [azcopy]: https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-linux?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+[deisrel]: https://github.com/deis/deisrel
 [delve]: https://github.com/derekparker/delve
 [dep]: https://github.com/golang/dep
 [Docker Hub]: https://hub.docker.com
