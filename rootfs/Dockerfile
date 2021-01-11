@@ -10,7 +10,7 @@ ENV ANSIBLE_VERSION=2.10.3 \
     GO_VERSION=1.15.5 \
     GLIDE_VERSION=v0.13.3 \
     GLIDE_HOME=/root \
-    HELM_VERSION=v2.16.12 \
+    HELM_VERSION=3.4.2 \
     KUBECTL_VERSION=v1.16.3 \
     ETCDCTL_VERSION=v3.1.8 \
     GOLANGCI_LINT_VERSION=v1.31.0 \
@@ -72,8 +72,9 @@ RUN \
   && curl -sSL https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl \
   && chmod +x /usr/local/bin/kubectl \
   && mkdir -p ${GOPATH}/src/k8s.io/helm \
-  && curl -sSL https://storage.googleapis.com/kubernetes-helm/helm-${HELM_VERSION}-linux-amd64.tar.gz \
-    | tar -vxz -C /usr/local/bin --strip=1 \
+  && curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 \
+  && chmod 700 get_helm.sh && get_helm.sh --version ${HELM_VERSION} \
+  && rm ./get_helm.sh \
   && mkdir -p /go/bin \
   && curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh \
   && curl -sSL https://aka.ms/downloadazcopy-v10-linux | tar -vxz -C /usr/local/bin --strip=1 \
