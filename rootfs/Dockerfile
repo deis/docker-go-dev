@@ -73,7 +73,7 @@ RUN \
   && chmod +x /usr/local/bin/kubectl \
   && mkdir -p ${GOPATH}/src/k8s.io/helm \
   && curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 \
-  && chmod 700 get_helm.sh && get_helm.sh --version ${HELM_VERSION} \
+  && chmod 700 get_helm.sh && ./get_helm.sh --version v${HELM_VERSION} \
   && rm ./get_helm.sh \
   && mkdir -p /go/bin \
   && curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh \
