@@ -114,6 +114,7 @@ jobs:
 
       - name: Push image to quay.io
         run: |
+          GITHUB_ORG=$(echo "${{ github.repository }}" | sed -e 's#/.*##')
           IMAGE_ID=quay.io/$GITHUB_ORG/$IMAGE_NAME
 
           # Change all uppercase to lowercase
