@@ -1,6 +1,6 @@
 # deis/go-dev
 
-[![Build Status](https://travis-ci.org/deis/docker-go-dev.svg?branch=master)](https://travis-ci.org/deis/docker-go-dev) [![Docker Repository on Quay](https://quay.io/repository/deis/go-dev/status "Docker Repository on Quay")](https://quay.io/repository/deis/go-dev)
+[![Build Status](https://github.com/deis/docker-go-dev/actions/workflows/docker-publish.yml/badge.svg)](https://quay.io/repository/deis/go-dev?tab=tags)
 
 A [Go][] language development toolbox.
 
