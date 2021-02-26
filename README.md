@@ -13,15 +13,10 @@ creating [issues][] and submitting [pull requests][].
 * based on [Ubuntu 18.04][]
 * [az][]: Azure cloud command-line tool
 * [azcopy][]: Utility for copying data to/from Microsoft Azure Blob and File storage
-* [dep][]: Go dependency management tool
 * [delve][]: debugger for the Go programming language
 * [Docker][]: Docker binaries to be able to bind mount /var/run/docker.sock in the dev environment container
-* [gb][]: project-based build tool for Go
 * [ginkgo][]: BDD testing framework for Go
-* [glide][]: Go dependency management tool
 * [go-bindata][]: converts any file into Go source code
-* [golint][]: Go source code linter
-* [gometalinter][]: run Go lint tools concurrently
 * [golangci-lint][]: concurrent runner for Go linting tools
 * [gox][]: simple Go cross-compiling tool
 * [helm][]: Kubernetes package manager
@@ -43,14 +38,14 @@ creating [issues][] and submitting [pull requests][].
 ## Usage
 
 Mount your local Go code into a container's `$GOPATH` to run any `go` command or one of the
-included tools or scripts. Here's an example of running `glide up` for deis/builder:
+included tools or scripts. Here's an example of running `ginko` for deis/builder:
 
 ```console
 $ docker run --rm \
   --volume $GOPATH/src/github.com/deis/builder:/go/src/github.com/deis/builder \
   --workdir /go/src/github.com/deis/builder \
   quay.io/deis/go-dev:latest \
-  glide up
+  ginkgo -r
 ```
 
 ## Releases
@@ -87,18 +82,13 @@ You will be prompted to confirm again before any tag or release is written to Gi
 [az]: https://github.com/Azure/azure-cli#readme
 [azcopy]: https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-linux?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
 [deisrel]: https://github.com/deis/deisrel
-[delve]: https://github.com/derekparker/delve
-[dep]: https://github.com/golang/dep
+[delve]: https://github.com/go-delve/delve
 [Docker Hub]: https://hub.docker.com
 [Docker]: http://www.docker.com
-[gb]: https://github.com/constabulary/gb/
 [gen-changelog.sh]: https://github.com/deis/docker-go-dev/tree/master/rootfs/usr/local/bin/gen-changelog.sh
 [ginkgo]: https://github.com/onsi/ginkgo
-[glide]: https://github.com/Masterminds/glide
 [go-bindata]: https://github.com/jteeuwen/go-bindata
 [Go]: https://golang.org/
-[golint]: https://github.com/golang/lint
-[gometalinter]: https://github.com/alecthomas/gometalinter
 [golangci-lint]: https://github.com/golangci/golangci-lint
 [gox]: https://github.com/mitchellh/gox
 [helm]: https://github.com/kubernetes/helm

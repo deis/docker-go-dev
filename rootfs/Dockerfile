@@ -5,17 +5,15 @@ LABEL name="deis-go-dev" \
 
 ENV ANSIBLE_VERSION=2.10.3 \
     AZCLI_VERSION=2.17.1 \
-    PYJWT_VERSION=1.7.1 \
     DOCKER_VERSION=20.10.2 \
+    ETCDCTL_VERSION=v3.1.8 \
     GO_VERSION=1.15.8 \
-    GLIDE_VERSION=v0.13.3 \
-    GLIDE_HOME=/root \
+    GOLANGCI_LINT_VERSION=v1.31.0 \
     HELM_VERSION=3.5.0 \
     KUBECTL_VERSION=v1.16.3 \
-    ETCDCTL_VERSION=v3.1.8 \
-    GOLANGCI_LINT_VERSION=v1.31.0 \
     PACKER_VERSION=1.6.1 \
     PROTOBUF_VERSION=3.7.0 \
+    PYJWT_VERSION=1.7.1 \
     PYWINRM_VERSION=0.4.1 \
     SHELLCHECK_VERSION=v0.7.1 \
     SHFMT_VERSION=3.1.2 \
@@ -64,8 +62,6 @@ RUN \
     yq \
     zip \
   && curl -L https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz | tar -C /usr/local -xz \
-  && curl -sSL https://github.com/Masterminds/glide/releases/download/${GLIDE_VERSION}/glide-${GLIDE_VERSION}-linux-amd64.tar.gz \
-    | tar -vxz -C /usr/local/bin --strip=1 \
   && curl -sSL -o /tmp/protoc.zip https://github.com/google/protobuf/releases/download/v${PROTOBUF_VERSION}/protoc-${PROTOBUF_VERSION}-linux-x86_64.zip \
   && unzip /tmp/protoc.zip 'bin/protoc' -d /usr/local \
   && rm /tmp/protoc.zip \
@@ -76,7 +72,6 @@ RUN \
   && chmod 700 get_helm.sh && ./get_helm.sh --version v${HELM_VERSION} \
   && rm ./get_helm.sh \
   && mkdir -p /go/bin \
-  && curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh \
   && curl -sSL https://aka.ms/downloadazcopy-v10-linux | tar -vxz -C /usr/local/bin --strip=1 \
   && mv /usr/local/bin/azcopy /usr/local/bin/azcopy-preview \
   && curl -sSL https://aka.ms/downloadazcopylinux64 | tar -vxz -C /tmp \
@@ -93,7 +88,6 @@ RUN \
   && go get -u -v \
     github.com/AlekSi/gocov-xml \
     github.com/axw/gocov/gocov \
-    github.com/constabulary/gb/... \
     github.com/go-delve/delve/cmd/dlv \
     github.com/dgrijalva/jwt-go/cmd/jwt \
     github.com/golang/protobuf/protoc-gen-go \
@@ -101,9 +95,6 @@ RUN \
     github.com/jteeuwen/go-bindata/... \
     github.com/mitchellh/gox \
     github.com/onsi/ginkgo/ginkgo \
-    gopkg.in/alecthomas/gometalinter.v2 \
-  && ln -s ${GOPATH}/bin/gometalinter.v2 ${GOPATH}/bin/gometalinter \
-  && gometalinter.v2 --install \
   && curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b ${GOPATH}/bin ${GOLANGCI_LINT_VERSION} \
   && curl -sSL https://github.com/koalaman/shellcheck/releases/download/${SHELLCHECK_VERSION}/shellcheck-${SHELLCHECK_VERSION}.linux.x86_64.tar.xz \
     | tar -vxJ -C /usr/local/bin --strip=1 \
