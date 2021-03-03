@@ -4,11 +4,11 @@ LABEL name="deis-go-dev" \
       maintainer="Matt Boersma <matt.boersma@microsoft.com>"
 
 ENV ANSIBLE_VERSION=2.10.3 \
-    AZCLI_VERSION=2.17.1 \
+    AZCLI_VERSION=2.20.0 \
     DOCKER_VERSION=20.10.2 \
     ETCDCTL_VERSION=v3.1.8 \
     GO_VERSION=1.15.8 \
-    GOLANGCI_LINT_VERSION=v1.31.0 \
+    GOLANGCI_LINT_VERSION=v1.38.0 \
     HELM_VERSION=3.5.2 \
     KUBECTL_VERSION=v1.16.3 \
     PACKER_VERSION=1.6.1 \
@@ -16,7 +16,7 @@ ENV ANSIBLE_VERSION=2.10.3 \
     PYJWT_VERSION=1.7.1 \
     PYWINRM_VERSION=0.4.1 \
     SHELLCHECK_VERSION=v0.7.1 \
-    SHFMT_VERSION=3.1.2 \
+    SHFMT_VERSION=3.2.2 \
     PATH=$PATH:/usr/local/go/bin:/go/bin:/usr/local/bin/docker \
     GOPATH=/go
 
@@ -102,6 +102,7 @@ RUN \
     && unzip /tmp/packer.zip -d /usr/local/bin \
   && curl -o /usr/local/bin/shfmt -sSL https://github.com/mvdan/sh/releases/download/v{SHFMT_VERSION}/shfmt_v{SHFMT_VERSION}_linux_amd64 \
   && chmod +x /usr/local/bin/shfmt \
+  && pip3 install --disable-pip-version-check --no-cache-dir --upgrade pip \
   && pip3 install --disable-pip-version-check --no-cache-dir azure-cli==${AZCLI_VERSION} PyJWT==${PYJWT_VERSION} shyaml ansible==${ANSIBLE_VERSION} pywinrm==${PYWINRM_VERSION} \
   && apt-get purge --auto-remove -y libffi-dev python3-dev \
   && apt-get autoremove -y \
