@@ -16,7 +16,7 @@ ENV ANSIBLE_VERSION=2.10.3 \
     PYJWT_VERSION=1.7.1 \
     PYWINRM_VERSION=0.4.1 \
     SHELLCHECK_VERSION=v0.7.1 \
-    SHFMT_VERSION=3.1.2 \
+    SHFMT_VERSION=3.2.2 \
     PATH=$PATH:/usr/local/go/bin:/go/bin:/usr/local/bin/docker \
     GOPATH=/go
 
