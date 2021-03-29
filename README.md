@@ -52,6 +52,12 @@ $ docker run --rm \
 
 The latest deis/go-dev Docker image is available at:
 
+* [Microsoft Container Registry][]
+  ```
+  docker pull mcr.microsoft.com/oss/azcu/go-dev:<tag>
+  ```
+  Browse the [go-dev index URL][] to see which tags are available.
+
 * [Quay.io][]
   ```
   docker pull quay.io/deis/go-dev
@@ -89,6 +95,7 @@ You will be prompted to confirm again before any tag or release is written to Gi
 [ginkgo]: https://github.com/onsi/ginkgo
 [go-bindata]: https://github.com/jteeuwen/go-bindata
 [Go]: https://golang.org/
+[go-dev index URL]: https://mcr.microsoft.com/v2/oss/azcu/go-dev/tags/list
 [golangci-lint]: https://github.com/golangci/golangci-lint
 [gox]: https://github.com/mitchellh/gox
 [helm]: https://github.com/kubernetes/helm
@@ -97,6 +104,7 @@ You will be prompted to confirm again before any tag or release is written to Gi
 [jwt]: https://github.com/dgrijalva/jwt-go
 [k]: https://github.com/jakepearson/k
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl-overview/
+[Microsoft Container Registry]: https://github.com/microsoft/containerregistry
 [pull requests]: https://github.com/deis/docker-go-dev/pulls
 [Quay.io]: https://quay.io
 [Packer]: https://github.com/hashicorp/packer
