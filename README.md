@@ -18,6 +18,7 @@ creating [issues][] and submitting [pull requests][].
 * [ginkgo][]: BDD testing framework for Go
 * [go-bindata][]: converts any file into Go source code
 * [golangci-lint][]: concurrent runner for Go linting tools
+* [goss][]: YAML-based tool for validating a server's configuration
 * [gox][]: simple Go cross-compiling tool
 * [helm][]: Kubernetes package manager
 * [jq][]: command-line JSON processor
@@ -97,6 +98,7 @@ You will be prompted to confirm again before any tag or release is written to Gi
 [Go]: https://golang.org/
 [go-dev index URL]: https://mcr.microsoft.com/v2/oss/azcu/go-dev/tags/list
 [golangci-lint]: https://github.com/golangci/golangci-lint
+[goss]: https://github.com/aelsabbahy/goss
 [gox]: https://github.com/mitchellh/gox
 [helm]: https://github.com/kubernetes/helm
 [issues]: https://github.com/deis/docker-go-dev/issues

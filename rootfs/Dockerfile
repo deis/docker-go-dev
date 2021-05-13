@@ -9,6 +9,7 @@ ENV ANSIBLE_VERSION=2.10.3 \
     ETCDCTL_VERSION=v3.1.8 \
     GO_VERSION=1.16.4 \
     GOLANGCI_LINT_VERSION=v1.39.0 \
+    GOSS_VERSION=v0.3.16 \
     HELM_VERSION=3.5.4 \
     KUBECTL_VERSION=v1.18.18 \
     PACKER_VERSION=1.6.1 \
@@ -102,6 +103,10 @@ RUN \
     && unzip /tmp/packer.zip -d /usr/local/bin \
   && curl -o /usr/local/bin/shfmt -sSL https://github.com/mvdan/sh/releases/download/v{SHFMT_VERSION}/shfmt_v{SHFMT_VERSION}_linux_amd64 \
   && chmod +x /usr/local/bin/shfmt \
+  && curl -L "https://github.com/aelsabbahy/goss/releases/download/${GOSS_VERSION}/goss-linux-amd64" -o /usr/local/bin/goss \
+  && chmod +rx /usr/local/bin/goss \
+  && curl -L "https://github.com/aelsabbahy/goss/releases/download/${GOSS_VERSION}/dgoss" -o /usr/local/bin/dgoss \
+  && chmod +rx /usr/local/bin/dgoss \
   && pip3 install --disable-pip-version-check --no-cache-dir --upgrade pip \
   && pip3 install --disable-pip-version-check --no-cache-dir azure-cli==${AZCLI_VERSION} PyJWT==${PYJWT_VERSION} shyaml ansible==${ANSIBLE_VERSION} pywinrm==${PYWINRM_VERSION} \
   && apt-get purge --auto-remove -y libffi-dev python3-dev \
