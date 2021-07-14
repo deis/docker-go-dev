@@ -18,6 +18,7 @@ ENV ANSIBLE_VERSION=2.10.3 \
     PYWINRM_VERSION=0.4.1 \
     SHELLCHECK_VERSION=v0.7.2 \
     SHFMT_VERSION=3.2.4 \
+    UPX_VERSION=3.96 \
     PATH=$PATH:/usr/local/go/bin:/go/bin:/usr/local/bin/docker \
     GOPATH=/go
 
@@ -55,7 +56,6 @@ RUN \
     rsync \
     ruby \
     unzip \
-    upx \
     util-linux \
     vim \
     wamerican \
@@ -107,6 +107,9 @@ RUN \
   && chmod +rx /usr/local/bin/goss \
   && curl -L "https://github.com/aelsabbahy/goss/releases/download/${GOSS_VERSION}/dgoss" -o /usr/local/bin/dgoss \
   && chmod +rx /usr/local/bin/dgoss \
+  && curl -sSL -o /tmp/upx.tar.xz https://github.com/upx/upx/releases/download/v${UPX_VERSION}/upx-${UPX_VERSION}-amd64_linux.tar.xz \
+  && tar -xvf /tmp/upx.tar.xz -C /tmp \
+  && mv /tmp/upx-${UPX_VERSION}-amd64_linux/upx /usr/local/bin/upx \
   && pip3 install --disable-pip-version-check --no-cache-dir --upgrade pip \
   && pip3 install --disable-pip-version-check --no-cache-dir azure-cli==${AZCLI_VERSION} PyJWT==${PYJWT_VERSION} shyaml ansible==${ANSIBLE_VERSION} pywinrm==${PYWINRM_VERSION} \
   && apt-get purge --auto-remove -y libffi-dev python3-dev \
