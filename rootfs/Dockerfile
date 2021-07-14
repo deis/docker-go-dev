@@ -4,7 +4,7 @@ LABEL name="deis-go-dev" \
       maintainer="Matt Boersma <matt.boersma@microsoft.com>"
 
 ENV ANSIBLE_VERSION=2.10.3 \
-    AZCLI_VERSION=2.23.0 \
+    AZCLI_VERSION=2.26.1 \
     DOCKER_VERSION=20.10.2 \
     ETCDCTL_VERSION=v3.1.8 \
     GO_VERSION=1.16.6 \
@@ -14,7 +14,7 @@ ENV ANSIBLE_VERSION=2.10.3 \
     KUBECTL_VERSION=v1.21.2 \
     PACKER_VERSION=1.7.2 \
     PROTOBUF_VERSION=3.7.0 \
-    PYJWT_VERSION=1.7.1 \
+    PYJWT_VERSION=2.1.0 \
     PYWINRM_VERSION=0.4.1 \
     SHELLCHECK_VERSION=v0.7.2 \
     SHFMT_VERSION=3.2.4 \
@@ -111,7 +111,7 @@ RUN \
   && tar -xvf /tmp/upx.tar.xz -C /tmp \
   && mv /tmp/upx-${UPX_VERSION}-amd64_linux/upx /usr/local/bin/upx \
   && pip3 install --disable-pip-version-check --no-cache-dir --upgrade pip \
-  && pip3 install --disable-pip-version-check --no-cache-dir azure-cli==${AZCLI_VERSION} PyJWT==${PYJWT_VERSION} shyaml ansible==${ANSIBLE_VERSION} pywinrm==${PYWINRM_VERSION} \
+  && pip3 install --disable-pip-version-check --no-cache-dir --upgrade azure-cli==${AZCLI_VERSION} PyJWT==${PYJWT_VERSION} shyaml ansible==${ANSIBLE_VERSION} pywinrm==${PYWINRM_VERSION} \
   && apt-get purge --auto-remove -y libffi-dev python3-dev \
   && apt-get autoremove -y \
   && apt-get clean -y \
