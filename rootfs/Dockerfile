@@ -3,7 +3,7 @@ FROM ubuntu:18.04
 LABEL name="deis-go-dev" \
       maintainer="Matt Boersma <matt.boersma@microsoft.com>"
 
-ENV ANSIBLE_VERSION=2.10.3 \
+ENV ANSIBLE_VERSION=2.10.9 \
     AZCLI_VERSION=2.26.1 \
     DOCKER_VERSION=20.10.2 \
     ETCDCTL_VERSION=v3.1.8 \
@@ -111,7 +111,8 @@ RUN \
   && tar -xvf /tmp/upx.tar.xz -C /tmp \
   && mv /tmp/upx-${UPX_VERSION}-amd64_linux/upx /usr/local/bin/upx \
   && pip3 install --disable-pip-version-check --no-cache-dir --upgrade pip \
-  && pip3 install --disable-pip-version-check --no-cache-dir --upgrade azure-cli==${AZCLI_VERSION} PyJWT==${PYJWT_VERSION} shyaml ansible==${ANSIBLE_VERSION} pywinrm==${PYWINRM_VERSION} \
+  && pip3 install --disable-pip-version-check --no-cache-dir azure-cli==${AZCLI_VERSION} PyJWT==${PYJWT_VERSION} shyaml ansible-base==${ANSIBLE_VERSION} pywinrm==${PYWINRM_VERSION} \
+  && ansible-galaxy collection install ansible.windows \
   && apt-get purge --auto-remove -y libffi-dev python3-dev \
   && apt-get autoremove -y \
   && apt-get clean -y \
