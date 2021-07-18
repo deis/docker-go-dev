@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 LABEL name="deis-go-dev" \
       maintainer="Matt Boersma <matt.boersma@microsoft.com>"
@@ -40,7 +40,7 @@ RUN \
     git-core \
     jq \
     libffi-dev \
-    libicu60 \
+    libc6 \
     libssl-dev \
     libunwind8 \
     man \
