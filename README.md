@@ -10,7 +10,7 @@ creating [issues][] and submitting [pull requests][].
 
 ## Image Contents
 
-* based on [Ubuntu 18.04][]
+* based on [Ubuntu 20.04][]
 * [az][]: Azure cloud command-line tool
 * [azcopy][]: Utility for copying data to/from Microsoft Azure Blob and File storage
 * [delve][]: debugger for the Go programming language
