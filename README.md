@@ -115,7 +115,7 @@ You will be prompted to confirm again before any tag or release is written to Gi
 [shfmt]: https://github.com/mvdan/sh
 [shyaml]: https://github.com/0k/shyaml
 [test-cover.sh]: https://github.com/deis/docker-go-dev/tree/master/rootfs/usr/local/bin/test-cover.sh
-[Ubuntu 18.04]: https://hub.docker.com/_/ubuntu/
+[Ubuntu 20.04]: https://hub.docker.com/_/ubuntu/
 [unzip]: https://linux.die.net/man/1/unzip
 [upx]: http://upx.sourceforge.net/
 [vim]: http://www.vim.org/
