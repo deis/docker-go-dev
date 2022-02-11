@@ -1,26 +1,26 @@
 FROM ubuntu:20.04
 
 LABEL name="deis-go-dev" \
-      maintainer="Matt Boersma <matt.boersma@microsoft.com>"
+  maintainer="Matt Boersma <matt.boersma@microsoft.com>"
 
 ENV ANSIBLE_VERSION=4.2.0 \
-    AZCLI_VERSION=2.27.2 \
-    DOCKER_VERSION=20.10.2 \
-    ETCDCTL_VERSION=v3.1.8 \
-    GO_VERSION=1.17.7 \
-    GOLANGCI_LINT_VERSION=v1.42.0 \
-    GOSS_VERSION=v0.3.16 \
-    HELM_VERSION=3.6.2 \
-    KUBECTL_VERSION=v1.21.3 \
-    PACKER_VERSION=1.7.3 \
-    PROTOBUF_VERSION=3.7.0 \
-    PYJWT_VERSION=2.1.0 \
-    PYWINRM_VERSION=0.4.2 \
-    SHELLCHECK_VERSION=v0.7.2 \
-    SHFMT_VERSION=3.3.0 \
-    UPX_VERSION=3.96 \
-    PATH=$PATH:/usr/local/go/bin:/go/bin:/usr/local/bin/docker \
-    GOPATH=/go
+  AZCLI_VERSION=2.27.2 \
+  DOCKER_VERSION=20.10.2 \
+  ETCDCTL_VERSION=v3.1.8 \
+  GO_VERSION=1.17.7 \
+  GOLANGCI_LINT_VERSION=v1.44.0 \
+  GOSS_VERSION=v0.3.16 \
+  HELM_VERSION=3.6.2 \
+  KUBECTL_VERSION=v1.21.3 \
+  PACKER_VERSION=1.7.3 \
+  PROTOBUF_VERSION=3.7.0 \
+  PYJWT_VERSION=2.1.0 \
+  PYWINRM_VERSION=0.4.2 \
+  SHELLCHECK_VERSION=v0.7.2 \
+  SHFMT_VERSION=3.3.0 \
+  UPX_VERSION=3.96 \
+  PATH=$PATH:/usr/local/go/bin:/go/bin:/usr/local/bin/docker \
+  GOPATH=/go
 
 # This is a huge one-liner to optimize the Docker image layer.
 # We disable source repos to speed up apt-get update.
@@ -30,34 +30,34 @@ RUN \
   apt-get update && \
   apt-get upgrade -y --no-install-recommends && \
   apt-get install -y --no-install-recommends \
-    bash \
-    build-essential \
-    ca-certificates \
-    curl \
-    git-core \
-    jq \
-    libffi-dev \
-    libc6 \
-    libssl-dev \
-    libunwind8 \
-    man \
-    mercurial \
-    net-tools \
-    netcat \
-    openssh-client \
-    procps \
-    python3 \
-    python3-dev \
-    python3-pip \
-    python3-setuptools \
-    rsync \
-    ruby \
-    unzip \
-    util-linux \
-    vim \
-    wamerican \
-    wget \
-    zip \
+  bash \
+  build-essential \
+  ca-certificates \
+  curl \
+  git-core \
+  jq \
+  libffi-dev \
+  libc6 \
+  libssl-dev \
+  libunwind8 \
+  man \
+  mercurial \
+  net-tools \
+  netcat \
+  openssh-client \
+  procps \
+  python3 \
+  python3-dev \
+  python3-pip \
+  python3-setuptools \
+  rsync \
+  ruby \
+  unzip \
+  util-linux \
+  vim \
+  wamerican \
+  wget \
+  zip \
   && curl -L https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz | tar -C /usr/local -xz \
   && curl -sSL -o /tmp/protoc.zip https://github.com/google/protobuf/releases/download/v${PROTOBUF_VERSION}/protoc-${PROTOBUF_VERSION}-linux-x86_64.zip \
   && unzip /tmp/protoc.zip 'bin/protoc' -d /usr/local \
@@ -83,20 +83,20 @@ RUN \
   && mv /tmp/etcdctl /usr/local/bin/etcdctl \
   && rm /tmp/etcd-${ETCDCTL_VERSION}.tar.gz \
   && go get -u -v \
-    github.com/AlekSi/gocov-xml \
-    github.com/axw/gocov/gocov \
-    github.com/go-delve/delve/cmd/dlv \
-    github.com/dgrijalva/jwt-go/cmd/jwt \
-    github.com/golang/protobuf/protoc-gen-go \
-    github.com/haya14busa/goverage \
-    github.com/jteeuwen/go-bindata/... \
-    github.com/mitchellh/gox \
-    github.com/onsi/ginkgo/ginkgo \
+  github.com/AlekSi/gocov-xml \
+  github.com/axw/gocov/gocov \
+  github.com/go-delve/delve/cmd/dlv \
+  github.com/dgrijalva/jwt-go/cmd/jwt \
+  github.com/golang/protobuf/protoc-gen-go \
+  github.com/haya14busa/goverage \
+  github.com/jteeuwen/go-bindata/... \
+  github.com/mitchellh/gox \
+  github.com/onsi/ginkgo/ginkgo \
   && curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b ${GOPATH}/bin ${GOLANGCI_LINT_VERSION} \
   && curl -sSL https://github.com/koalaman/shellcheck/releases/download/${SHELLCHECK_VERSION}/shellcheck-${SHELLCHECK_VERSION}.linux.x86_64.tar.xz \
-    | tar -vxJ -C /usr/local/bin --strip=1 \
+  | tar -vxJ -C /usr/local/bin --strip=1 \
   && curl -sSL https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip -o /tmp/packer.zip \
-    && unzip /tmp/packer.zip -d /usr/local/bin \
+  && unzip /tmp/packer.zip -d /usr/local/bin \
   && curl -o /usr/local/bin/shfmt -sSL https://github.com/mvdan/sh/releases/download/v{SHFMT_VERSION}/shfmt_v{SHFMT_VERSION}_linux_amd64 \
   && chmod +x /usr/local/bin/shfmt \
   && curl -L "https://github.com/aelsabbahy/goss/releases/download/${GOSS_VERSION}/goss-linux-amd64" -o /usr/local/bin/goss \
