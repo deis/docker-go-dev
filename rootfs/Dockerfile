@@ -28,6 +28,9 @@ RUN \
   sed -i -e 's/^deb-src/#deb-src/' /etc/apt/sources.list && \
   export DEBIAN_FRONTEND=noninteractive && \
   apt-get update && \
+  apt-get install -y software-properties-common && \
+  add-apt-repository ppa:rmescandon/yq && \
+  apt-get update && \
   apt-get upgrade -y --no-install-recommends && \
   apt-get install -y --no-install-recommends \
   bash \
@@ -57,6 +60,7 @@ RUN \
   vim \
   wamerican \
   wget \
+  yq \
   zip \
   && curl -L https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz | tar -C /usr/local -xz \
   && curl -sSL -o /tmp/protoc.zip https://github.com/google/protobuf/releases/download/v${PROTOBUF_VERSION}/protoc-${PROTOBUF_VERSION}-linux-x86_64.zip \
