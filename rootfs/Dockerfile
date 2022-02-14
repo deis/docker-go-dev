@@ -4,7 +4,7 @@ LABEL name="deis-go-dev" \
   maintainer="Matt Boersma <matt.boersma@microsoft.com>"
 
 ENV ANSIBLE_VERSION=4.2.0 \
-  AZCLI_VERSION=2.27.2 \
+  AZCLI_VERSION=2.33.1 \
   DOCKER_VERSION=20.10.2 \
   ETCDCTL_VERSION=v3.1.8 \
   GO_VERSION=1.17.7 \
