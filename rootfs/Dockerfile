@@ -112,8 +112,8 @@ RUN \
   && mv /tmp/upx-${UPX_VERSION}-amd64_linux/upx /usr/local/bin/upx \
   && pip3 install --disable-pip-version-check --no-cache-dir --upgrade pip \
   && pip3 install --disable-pip-version-check --no-cache-dir --upgrade azure-cli==${AZCLI_VERSION} PyJWT==${PYJWT_VERSION} shyaml pywinrm==${PYWINRM_VERSION} \
-  && pip3 install --disable-pip-version-check --no-cache-dir --upgrade ansible==4.2.0 ansible-core --force-reinstall \
-  && ansible-galaxy collection install ansible.windows:==1.7.0 \
+  && pip3 install --disable-pip-version-check --no-cache-dir --upgrade ansible==4.2.0 ansible-core==2.11.5 --force-reinstall \
+  && ansible-galaxy collection install ansible.windows:==1.10.0 \
   && apt-get purge --auto-remove -y libffi-dev python3-dev \
   && apt-get autoremove -y \
   && apt-get clean -y \
