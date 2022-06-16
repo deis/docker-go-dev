@@ -3,7 +3,7 @@ FROM ubuntu:20.04
 LABEL name="deis-go-dev" \
   maintainer="Matt Boersma <matt.boersma@microsoft.com>"
 
-ENV ANSIBLE_VERSION=4.2.0 \
+ENV ANSIBLE_VERSION=5.9.0 \
   AZCLI_VERSION=2.33.1 \
   DOCKER_VERSION=20.10.2 \
   ETCDCTL_VERSION=v3.1.8 \
@@ -112,7 +112,7 @@ RUN \
   && mv /tmp/upx-${UPX_VERSION}-amd64_linux/upx /usr/local/bin/upx \
   && pip3 install --disable-pip-version-check --no-cache-dir --upgrade pip \
   && pip3 install --disable-pip-version-check --no-cache-dir --upgrade azure-cli==${AZCLI_VERSION} PyJWT==${PYJWT_VERSION} shyaml pywinrm==${PYWINRM_VERSION} \
-  && pip3 install --disable-pip-version-check --no-cache-dir --upgrade ansible==4.2.0 ansible-core==2.11.5 --force-reinstall \
+  && pip3 install --disable-pip-version-check --no-cache-dir --upgrade ansible==${ANSIBLE_VERSION} ansible-core==2.12.6 --force-reinstall \
   && ansible-galaxy collection install ansible.windows:==1.10.0 \
   && apt-get purge --auto-remove -y libffi-dev python3-dev \
   && apt-get autoremove -y \
