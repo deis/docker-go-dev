@@ -3,13 +3,15 @@ FROM ubuntu:20.04
 LABEL name="deis-go-dev" \
   maintainer="Matt Boersma <matt.boersma@microsoft.com>"
 
+ARG TARGETOS
+ARG TARGETARCH
 ENV ANSIBLE_VERSION=5.9.0 \
   AZCLI_VERSION=2.33.1 \
   DOCKER_VERSION=20.10.2 \
-  ETCDCTL_VERSION=v3.1.8 \
+  ETCDCTL_VERSION=v3.4.8 \
   GO_VERSION=1.17.11 \
   GOLANGCI_LINT_VERSION=v1.45.2 \
-  GOSS_VERSION=v0.3.16 \
+  GOSS_VERSION=v0.3.18 \
   HELM_VERSION=3.6.2 \
   KUBECTL_VERSION=v1.21.3 \
   PACKER_VERSION=1.7.3 \
@@ -62,11 +64,17 @@ RUN \
   wget \
   yq \
   zip \
-  && curl -L https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz | tar -C /usr/local -xz \
-  && curl -sSL -o /tmp/protoc.zip https://github.com/google/protobuf/releases/download/v${PROTOBUF_VERSION}/protoc-${PROTOBUF_VERSION}-linux-x86_64.zip \
-  && unzip /tmp/protoc.zip 'bin/protoc' -d /usr/local \
-  && rm /tmp/protoc.zip \
-  && curl -sSL https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl \
+  && curl -L https://golang.org/dl/go${GO_VERSION}.${TARGETOS}-${TARGETARCH}.tar.gz | tar -C /usr/local -xz \
+  && if [ "${TARGETARCH}"="arm64" ]; \
+    then \
+        curl -sSL -o /tmp/protoc.zip https://github.com/google/protobuf/releases/download/v${PROTOBUF_VERSION}/protoc-${PROTOBUF_VERSION}-linux-aarch_64.zip \
+  		  && unzip /tmp/protoc.zip 'bin/protoc' -d /usr/local \
+ 		    && rm /tmp/protoc.zip ;\
+    else  \
+        curl -sSL -o /tmp/protoc.zip https://github.com/google/protobuf/releases/download/v${PROTOBUF_VERSION}/protoc-${PROTOBUF_VERSION}-linux-x86_64.zip \
+  		  && unzip /tmp/protoc.zip 'bin/protoc' -d /usr/local \
+ 		    && rm /tmp/protoc.zip ; fi\
+  && curl -sSL https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/${TARGETOS}/${TARGETARCH}/kubectl -o /usr/local/bin/kubectl \
   && chmod +x /usr/local/bin/kubectl \
   && mkdir -p ${GOPATH}/src/k8s.io/helm \
   && curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 \
@@ -78,12 +86,19 @@ RUN \
   && curl -sSL https://aka.ms/downloadazcopylinux64 | tar -vxz -C /tmp \
   && /tmp/install.sh \
   && apt-get update && apt-get -f -y install \
-  && curl -fsSLO https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKER_VERSION}.tgz \
-  && tar xzvf docker-${DOCKER_VERSION}.tgz -C /usr/local/bin \
-  && chmod +x -R /usr/local/bin/docker \
-  && rm docker-${DOCKER_VERSION}.tgz \
-  && curl -L https://github.com/coreos/etcd/releases/download/${ETCDCTL_VERSION}/etcd-${ETCDCTL_VERSION}-linux-amd64.tar.gz -o /tmp/etcd-${ETCDCTL_VERSION}.tar.gz \
-  && tar -C /tmp -xvzf /tmp/etcd-${ETCDCTL_VERSION}.tar.gz --strip-components=1 etcd-${ETCDCTL_VERSION}-linux-amd64/etcdctl \
+  && if [ "${TARGETARCH}"="arm64" ]; \
+    then \
+      curl -fsSLO https://download.docker.com/linux/static/stable/aarch64/docker-${DOCKER_VERSION}.tgz \
+        && tar xzvf docker-${DOCKER_VERSION}.tgz -C /usr/local/bin \
+        && chmod +x -R /usr/local/bin/docker \
+        && rm docker-${DOCKER_VERSION}.tgz ;\
+    else  \
+      curl -fsSLO https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKER_VERSION}.tgz \
+        && tar xzvf docker-${DOCKER_VERSION}.tgz -C /usr/local/bin \
+        && chmod +x -R /usr/local/bin/docker \
+        && rm docker-${DOCKER_VERSION}.tgz ;fi\
+  && curl -L https://github.com/coreos/etcd/releases/download/${ETCDCTL_VERSION}/etcd-${ETCDCTL_VERSION}-${TARGETOS}-${TARGETARCH}.tar.gz -o /tmp/etcd-${ETCDCTL_VERSION}.tar.gz \
+  && tar -C /tmp -xvzf /tmp/etcd-${ETCDCTL_VERSION}.tar.gz --strip-components=1 etcd-${ETCDCTL_VERSION}-${TARGETOS}-${TARGETARCH}/etcdctl \
   && mv /tmp/etcdctl /usr/local/bin/etcdctl \
   && rm /tmp/etcd-${ETCDCTL_VERSION}.tar.gz \
   && go get -u -v \
@@ -97,19 +112,22 @@ RUN \
   github.com/mitchellh/gox \
   github.com/onsi/ginkgo/ginkgo \
   && curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b ${GOPATH}/bin ${GOLANGCI_LINT_VERSION} \
-  && curl -sSL https://github.com/koalaman/shellcheck/releases/download/${SHELLCHECK_VERSION}/shellcheck-${SHELLCHECK_VERSION}.linux.x86_64.tar.xz \
-  | tar -vxJ -C /usr/local/bin --strip=1 \
-  && curl -sSL https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip -o /tmp/packer.zip \
+  && if [ "${TARGETARCH}"="arm64" ]; \
+    then \
+        curl -sSL https://github.com/koalaman/shellcheck/releases/download/${SHELLCHECK_VERSION}/shellcheck-${SHELLCHECK_VERSION}.linux.aarch64.tar.xz|tar -vxJ -C /usr/local/bin --strip=1 ;\
+    else  \
+        curl -sSL https://github.com/koalaman/shellcheck/releases/download/${SHELLCHECK_VERSION}/shellcheck-${SHELLCHECK_VERSION}.linux.x86_64.tar.xz|tar -vxJ -C /usr/local/bin --strip=1 ; fi \
+  && curl -sSL https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_${TARGETOS}_${TARGETARCH}.zip -o /tmp/packer.zip \
   && unzip /tmp/packer.zip -d /usr/local/bin \
-  && curl -o /usr/local/bin/shfmt -sSL https://github.com/mvdan/sh/releases/download/v{SHFMT_VERSION}/shfmt_v{SHFMT_VERSION}_linux_amd64 \
+  && curl -o /usr/local/bin/shfmt -sSL https://github.com/mvdan/sh/releases/download/v{SHFMT_VERSION}/shfmt_v{SHFMT_VERSION}_${TARGETOS}_${TARGETARCH} \
   && chmod +x /usr/local/bin/shfmt \
-  && curl -L "https://github.com/aelsabbahy/goss/releases/download/${GOSS_VERSION}/goss-linux-amd64" -o /usr/local/bin/goss \
+  && curl -L "https://github.com/aelsabbahy/goss/releases/download/${GOSS_VERSION}/goss-${TARGETOS}-${TARGETARCH}" -o /usr/local/bin/goss \
   && chmod +rx /usr/local/bin/goss \
   && curl -L "https://github.com/aelsabbahy/goss/releases/download/${GOSS_VERSION}/dgoss" -o /usr/local/bin/dgoss \
   && chmod +rx /usr/local/bin/dgoss \
-  && curl -sSL -o /tmp/upx.tar.xz https://github.com/upx/upx/releases/download/v${UPX_VERSION}/upx-${UPX_VERSION}-amd64_linux.tar.xz \
+  && curl -sSL -o /tmp/upx.tar.xz https://github.com/upx/upx/releases/download/v${UPX_VERSION}/upx-${UPX_VERSION}-${TARGETARCH}_${TARGETOS}.tar.xz \
   && tar -xvf /tmp/upx.tar.xz -C /tmp \
-  && mv /tmp/upx-${UPX_VERSION}-amd64_linux/upx /usr/local/bin/upx \
+  && mv /tmp/upx-${UPX_VERSION}-${TARGETARCH}_${TARGETOS}/upx /usr/local/bin/upx \
   && pip3 install --disable-pip-version-check --no-cache-dir --upgrade pip \
   && pip3 install --disable-pip-version-check --no-cache-dir --upgrade azure-cli==${AZCLI_VERSION} PyJWT==${PYJWT_VERSION} shyaml pywinrm==${PYWINRM_VERSION} \
   && pip3 install --disable-pip-version-check --no-cache-dir --upgrade ansible==${ANSIBLE_VERSION} ansible-core==2.12.6 --force-reinstall \
