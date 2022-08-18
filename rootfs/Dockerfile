@@ -12,7 +12,7 @@ ENV ANSIBLE_VERSION=5.9.0 \
   GOSS_VERSION=v0.3.16 \
   HELM_VERSION=3.6.2 \
   KUBECTL_VERSION=v1.21.3 \
-  PACKER_VERSION=1.8.1 \
+  PACKER_VERSION=1.8.3 \
   PROTOBUF_VERSION=3.7.0 \
   PYJWT_VERSION=2.1.0 \
   PYWINRM_VERSION=0.4.3 \
@@ -89,13 +89,13 @@ RUN \
   && go get -u -v \
   github.com/AlekSi/gocov-xml \
   github.com/axw/gocov/gocov \
-  github.com/go-delve/delve/cmd/dlv \
   github.com/dgrijalva/jwt-go/cmd/jwt \
   github.com/golang/protobuf/protoc-gen-go \
   github.com/haya14busa/goverage \
   github.com/jteeuwen/go-bindata/... \
   github.com/mitchellh/gox \
   github.com/onsi/ginkgo/ginkgo \
+  && go install -v github.com/go-delve/delve/cmd/dlv@v1.9.0 \
   && curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b ${GOPATH}/bin ${GOLANGCI_LINT_VERSION} \
   && curl -sSL https://github.com/koalaman/shellcheck/releases/download/${SHELLCHECK_VERSION}/shellcheck-${SHELLCHECK_VERSION}.linux.x86_64.tar.xz \
   | tar -vxJ -C /usr/local/bin --strip=1 \
