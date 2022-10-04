@@ -7,7 +7,7 @@ ENV ANSIBLE_VERSION=5.9.0 \
   AZCLI_VERSION=2.33.1 \
   DOCKER_VERSION=20.10.2 \
   ETCDCTL_VERSION=v3.1.8 \
-  GO_VERSION=1.17.13 \
+  GO_VERSION=1.18.7 \
   GOLANGCI_LINT_VERSION=v1.45.2 \
   GOSS_VERSION=v0.3.16 \
   HELM_VERSION=3.6.2 \
@@ -86,16 +86,15 @@ RUN \
   && tar -C /tmp -xvzf /tmp/etcd-${ETCDCTL_VERSION}.tar.gz --strip-components=1 etcd-${ETCDCTL_VERSION}-linux-amd64/etcdctl \
   && mv /tmp/etcdctl /usr/local/bin/etcdctl \
   && rm /tmp/etcd-${ETCDCTL_VERSION}.tar.gz \
-  && go get -u -v \
-  github.com/AlekSi/gocov-xml \
-  github.com/axw/gocov/gocov \
-  github.com/dgrijalva/jwt-go/cmd/jwt \
-  github.com/golang/protobuf/protoc-gen-go \
-  github.com/haya14busa/goverage \
-  github.com/jteeuwen/go-bindata/... \
-  github.com/mitchellh/gox \
-  github.com/onsi/ginkgo/ginkgo \
+  && go install -v github.com/AlekSi/gocov-xml@latest \
+  && go install -v github.com/axw/gocov/gocov@latest \
+  && go install -v github.com/dgrijalva/jwt-go/cmd/jwt@latest \
+  && go install -v github.com/go-bindata/go-bindata/go-bindata@v3.1.2 \
   && go install -v github.com/go-delve/delve/cmd/dlv@v1.9.0 \
+  && go install -v github.com/golang/protobuf/protoc-gen-go@latest \
+  && go install -v github.com/haya14busa/goverage@latest \
+  && go install -v github.com/mitchellh/gox@latest \
+  && go install -v github.com/onsi/ginkgo/ginkgo@v1.16.5 \
   && curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b ${GOPATH}/bin ${GOLANGCI_LINT_VERSION} \
   && curl -sSL https://github.com/koalaman/shellcheck/releases/download/${SHELLCHECK_VERSION}/shellcheck-${SHELLCHECK_VERSION}.linux.x86_64.tar.xz \
   | tar -vxJ -C /usr/local/bin --strip=1 \
