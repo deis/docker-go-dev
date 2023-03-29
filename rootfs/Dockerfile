@@ -4,12 +4,12 @@ LABEL name="deis-go-dev" \
   maintainer="Matt Boersma <matt.boersma@microsoft.com>"
 
 ENV ANSIBLE_VERSION=5.9.0 \
-  AZCLI_VERSION=2.33.1 \
+  AZCLI_VERSION=2.46.0 \
   DOCKER_VERSION=20.10.2 \
   ETCDCTL_VERSION=v3.1.8 \
   GO_VERSION=1.19.7 \
   GOLANGCI_LINT_VERSION=v1.52.2 \
-  GOSS_VERSION=v0.3.16 \
+  GOSS_VERSION=v0.3.21 \
   HELM_VERSION=3.6.2 \
   KUBECTL_VERSION=v1.21.3 \
   PACKER_VERSION=1.8.3 \
