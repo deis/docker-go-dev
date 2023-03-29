@@ -112,7 +112,7 @@ RUN \
   && pip3 install --disable-pip-version-check --no-cache-dir --upgrade pip \
   && pip3 install --disable-pip-version-check --no-cache-dir --upgrade azure-cli==${AZCLI_VERSION} PyJWT==${PYJWT_VERSION} shyaml pywinrm==${PYWINRM_VERSION} \
   && pip3 install --disable-pip-version-check --no-cache-dir --upgrade ansible==${ANSIBLE_VERSION} ansible-core==2.12.6 --force-reinstall \
-  && ansible-galaxy collection install ansible.windows:==1.10.0 \
+  && ansible-galaxy collection install ansible.windows:==1.13.0 \
   && apt-get purge --auto-remove -y libffi-dev python3-dev \
   && apt-get autoremove -y \
   && apt-get clean -y \
