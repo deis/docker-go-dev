@@ -10,9 +10,9 @@ ENV ANSIBLE_VERSION=5.9.0 \
   GO_VERSION=1.19.7 \
   GOLANGCI_LINT_VERSION=v1.52.2 \
   GOSS_VERSION=v0.3.21 \
-  HELM_VERSION=3.6.2 \
+  HELM_VERSION=3.11.2 \
   KUBECTL_VERSION=v1.26.3 \
-  PACKER_VERSION=1.8.3 \
+  PACKER_VERSION=1.8.6 \
   PROTOBUF_VERSION=3.7.0 \
   PYJWT_VERSION=2.1.0 \
   PYWINRM_VERSION=0.4.3 \
@@ -112,7 +112,7 @@ RUN \
   && pip3 install --disable-pip-version-check --no-cache-dir --upgrade pip \
   && pip3 install --disable-pip-version-check --no-cache-dir --upgrade azure-cli==${AZCLI_VERSION} PyJWT==${PYJWT_VERSION} shyaml pywinrm==${PYWINRM_VERSION} \
   && pip3 install --disable-pip-version-check --no-cache-dir --upgrade ansible==${ANSIBLE_VERSION} ansible-core==2.12.6 --force-reinstall \
-  && ansible-galaxy collection install ansible.windows:==1.10.0 \
+  && ansible-galaxy collection install ansible.windows:==1.13.0 \
   && apt-get purge --auto-remove -y libffi-dev python3-dev \
   && apt-get autoremove -y \
   && apt-get clean -y \
