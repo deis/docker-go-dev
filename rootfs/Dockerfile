@@ -28,7 +28,7 @@ RUN \
   sed -i -e 's/^deb-src/#deb-src/' /etc/apt/sources.list && \
   export DEBIAN_FRONTEND=noninteractive && \
   apt-get update && \
-  apt-get install -y software-properties-common && \
+  apt-get install --no-install-recommends -y software-properties-common && \
   add-apt-repository ppa:rmescandon/yq && \
   apt-get update && \
   apt-get upgrade -y --no-install-recommends && \
@@ -77,7 +77,7 @@ RUN \
   && mv /usr/local/bin/azcopy /usr/local/bin/azcopy-preview \
   && curl -sSL https://aka.ms/downloadazcopylinux64 | tar -vxz -C /tmp \
   && /tmp/install.sh \
-  && apt-get update && apt-get -f -y install \
+  && apt-get update && apt-get -f -y install --no-install-recommends \
   && curl -fsSLO https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKER_VERSION}.tgz \
   && tar xzvf docker-${DOCKER_VERSION}.tgz -C /usr/local/bin \
   && chmod +x -R /usr/local/bin/docker \
