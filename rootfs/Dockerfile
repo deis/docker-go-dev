@@ -1,10 +1,10 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 LABEL name="deis-go-dev" \
   maintainer="Matt Boersma <matt.boersma@microsoft.com>"
 
 ENV ANSIBLE_VERSION=5.9.0 \
-  AZCLI_VERSION=2.46.0 \
+  AZCLI_VERSION=2.52.0 \
   DOCKER_VERSION=20.10.2 \
   ETCDCTL_VERSION=v3.1.8 \
   GO_VERSION=1.20.7 \
@@ -14,11 +14,11 @@ ENV ANSIBLE_VERSION=5.9.0 \
   KUBECTL_VERSION=v1.26.3 \
   PACKER_VERSION=1.8.6 \
   PROTOBUF_VERSION=3.7.0 \
-  PYJWT_VERSION=2.1.0 \
   PYWINRM_VERSION=0.4.3 \
   SHELLCHECK_VERSION=v0.8.0 \
   SHFMT_VERSION=3.4.2 \
   UPX_VERSION=3.96 \
+  YQ_VERSION=v4.35.1 \
   PATH=$PATH:/usr/local/go/bin:/go/bin:/usr/local/bin/docker \
   GOPATH=/go
 
@@ -28,40 +28,36 @@ RUN \
   sed -i -e 's/^deb-src/#deb-src/' /etc/apt/sources.list && \
   export DEBIAN_FRONTEND=noninteractive && \
   apt-get update && \
-  apt-get install --no-install-recommends -y software-properties-common && \
-  add-apt-repository ppa:rmescandon/yq && \
-  apt-get update && \
   apt-get upgrade -y --no-install-recommends && \
   apt-get install -y --no-install-recommends \
-  bash \
-  build-essential \
-  ca-certificates \
-  curl \
-  git-core \
-  jq \
-  libffi-dev \
-  libc6 \
-  libssl-dev \
-  libunwind8 \
-  man \
-  mercurial \
-  net-tools \
-  netcat \
-  openssh-client \
-  procps \
-  python3 \
-  python3-dev \
-  python3-pip \
-  python3-setuptools \
-  rsync \
-  ruby \
-  unzip \
-  util-linux \
-  vim \
-  wamerican \
-  wget \
-  yq \
-  zip \
+    bash \
+    build-essential \
+    ca-certificates \
+    curl \
+    git-core \
+    jq \
+    libc6 \
+    libffi-dev \
+    libssl-dev \
+    libunwind8 \
+    man \
+    mercurial \
+    net-tools \
+    netcat \
+    openssh-client \
+    procps \
+    python3 \
+    python3-dev \
+    python3-pip \
+    python3-setuptools \
+    rsync \
+    ruby \
+    unzip \
+    util-linux \
+    vim \
+    wamerican \
+    wget \
+    zip \
   && curl -L https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz | tar -C /usr/local -xz \
   && curl -sSL -o /tmp/protoc.zip https://github.com/google/protobuf/releases/download/v${PROTOBUF_VERSION}/protoc-${PROTOBUF_VERSION}-linux-x86_64.zip \
   && unzip /tmp/protoc.zip 'bin/protoc' -d /usr/local \
@@ -72,6 +68,8 @@ RUN \
   && curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 \
   && chmod 700 get_helm.sh && ./get_helm.sh --version v${HELM_VERSION} \
   && rm ./get_helm.sh \
+  && wget https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64 -O /usr/bin/yq \
+  && chmod +x /usr/bin/yq \
   && mkdir -p /go/bin \
   && curl -sSL https://aka.ms/downloadazcopy-v10-linux | tar -vxz -C /usr/local/bin --strip=1 \
   && mv /usr/local/bin/azcopy /usr/local/bin/azcopy-preview \
@@ -110,7 +108,7 @@ RUN \
   && tar -xvf /tmp/upx.tar.xz -C /tmp \
   && mv /tmp/upx-${UPX_VERSION}-amd64_linux/upx /usr/local/bin/upx \
   && pip3 install --disable-pip-version-check --no-cache-dir --upgrade pip \
-  && pip3 install --disable-pip-version-check --no-cache-dir --upgrade azure-cli==${AZCLI_VERSION} PyJWT==${PYJWT_VERSION} shyaml pywinrm==${PYWINRM_VERSION} \
+  && pip3 install --disable-pip-version-check --no-cache-dir --upgrade azure-cli==${AZCLI_VERSION} PyJWT shyaml pywinrm==${PYWINRM_VERSION} \
   && pip3 install --disable-pip-version-check --no-cache-dir --upgrade ansible==${ANSIBLE_VERSION} ansible-core==2.12.6 --force-reinstall \
   && ansible-galaxy collection install ansible.windows:==1.13.0 \
   && apt-get purge --auto-remove -y libffi-dev python3-dev \
