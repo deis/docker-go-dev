@@ -10,7 +10,7 @@ creating [issues][] and submitting [pull requests][].
 
 ## Image Contents
 
-* based on [Ubuntu 20.04][]
+* based on [Ubuntu 22.04][]
 * [az][]: Azure cloud command-line tool
 * [azcopy][]: Utility for copying data to/from Microsoft Azure Blob and File storage
 * [delve][]: debugger for the Go programming language
@@ -35,6 +35,7 @@ creating [issues][] and submitting [pull requests][].
 * [upx][]: executable packer
 * [vim][]: text editor
 * [wamerican][]: American English dictionary words for /usr/share/dict
+* [yq][]: command-line YAML processor
 
 ## Usage
 
@@ -115,9 +116,10 @@ You will be prompted to confirm again before any tag or release is written to Gi
 [shfmt]: https://github.com/mvdan/sh
 [shyaml]: https://github.com/0k/shyaml
 [test-cover.sh]: https://github.com/deis/docker-go-dev/tree/master/rootfs/usr/local/bin/test-cover.sh
-[Ubuntu 20.04]: https://hub.docker.com/_/ubuntu/
+[Ubuntu 22.04]: https://hub.docker.com/_/ubuntu/
 [unzip]: https://linux.die.net/man/1/unzip
 [upx]: http://upx.sourceforge.net/
 [vim]: http://www.vim.org/
 [ruby]: https://www.ruby-lang.org/
 [wamerican]: https://packages.ubuntu.com/xenial/wamerican
+[yq]: https://github.com/mikefarah/yq
