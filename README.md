@@ -99,7 +99,7 @@ You will be prompted to confirm again before any tag or release is written to Gi
 [Go]: https://golang.org/
 [go-dev index URL]: https://mcr.microsoft.com/v2/oss/azcu/go-dev/tags/list
 [golangci-lint]: https://github.com/golangci/golangci-lint
-[goss]: https://github.com/aelsabbahy/goss
+[goss]: https://github.com/goss-org/goss
 [gox]: https://github.com/mitchellh/gox
 [helm]: https://github.com/kubernetes/helm
 [issues]: https://github.com/deis/docker-go-dev/issues
