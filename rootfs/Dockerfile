@@ -3,7 +3,7 @@ FROM ubuntu:22.04
 LABEL name="deis-go-dev" \
   maintainer="Matt Boersma <matt.boersma@microsoft.com>"
 
-ENV ANSIBLE_VERSION=2.15.9 \
+ENV ANSIBLE_VERSION=2.15.10 \
   AZCLI_VERSION=2.56.0 \
   DOCKER_VERSION=20.10.2 \
   ETCDCTL_VERSION=v3.1.8 \
