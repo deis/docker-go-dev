@@ -2,6 +2,10 @@
 
 [![Build Status](https://github.com/deis/docker-go-dev/actions/workflows/docker-publish.yml/badge.svg)](https://quay.io/repository/deis/go-dev?tab=tags)
 
+## ⚠ This project is deprecated ⚠
+
+deis/go-dev is no longer actively maintained.
+
 A [Go][] language development toolbox.
 
 Some Azure projects use this Docker image as a standard build and test environment,
